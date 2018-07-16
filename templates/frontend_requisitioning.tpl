@@ -2,7 +2,7 @@
 	<div id="rqList" class="div_wrap" style="display: none;">
 
 		<div class="align-right">
-			<button onclick="location.href='?pn={page_name}&requisitionId=new'">New RQ</button>
+			<button onclick="setRQId('new')">New RQ</button>
 		</div>
 		List of Purchase Orders. 
 		<span style="color: grey;">Click on a row to edit.</span> <br><br>
@@ -47,16 +47,13 @@
 			<button onclick="print_rq();">Print</button>
 			<button onclick="main('button');">Save</button>
 		</div>
-		<div class="align-left"><button onclick="location.href='?pn={page_name}'">Back to List</button></div>
+		<div class="align-left"><button onclick="setRQId(0)">Back to List</button></div>
 		<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
 		<div style="clear: both;"></div>
 		
 		<br />
 
 		<form id = "MyForm">
-
-			<div id="section-to-print">
-
 			<div id="rqData">
 				Office: 		<input type="text" name="initiatingOffice" value="" />
 				RqBy: 			<input type="text" name="requestedBy" value="" />
@@ -102,9 +99,7 @@
 					<td> <input type="checkbox" name="del" value=0 /> </td>
 				</tr>
 			</table>
-
-		</div>
-			<input id = "add" type ="button" onclick="copyRow('items_table');" value = "+" /> 
-			<input id = "add" type ="button" onclick="deleteRow('items_table');" value = "-" /> 
-	    </form>
+			<button type="button" onclick="copyRow('items_table');"> + </button>
+			<button type="button" onclick="deleteRow('items_table');"> - </button>
+		</form>
 	</div>

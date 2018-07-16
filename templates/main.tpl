@@ -7,12 +7,16 @@
     <script src="js/frontend_main.js"></script>
 
 	<script type="text/javascript">
+		var test = false; //global boolean for various tests
+		var rqId = 0; //0 for list view. number or 'new' for form view.
+		//loads the http queries
 		var qGET = new URLSearchParams(location.search);
-		if(qGET.has("pn")) {
-			var page_name = qGET.get("pn");
-		} else { var page_name = "Info"; }
+		var page_name = "";
 		//wait for page to fully load, then run the javascripts
-		window.onload = function() { main(); } 
+		window.onload = function() { 
+			page_name = document.getElementById("selected").innerHTML;
+			main(); 
+		} 
 	</script>
 </head>
 <body>
@@ -22,11 +26,7 @@
 	<div class="header">
 	  <div class="header-left"><a href="#"> MOE Forms </a></div>
 	  <div class="header-right">
-		<a href="?pn=Info"> Info </a>
-		<a href="?pn=Requisitioning">Requisitioning </a>
-		<a href="?pn=Receiving">Receiving </a>
-		<a href="?pn=Distribution">Distribution </a>
-		<a href="?pn=Inventory">Inventory </a>
+		{page_name_selector}
 	  </div>
 	</div>
 
