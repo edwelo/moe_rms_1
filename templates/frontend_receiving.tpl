@@ -1,12 +1,18 @@
 	<!-- requisition list section -->
-	<div id="rqList" class="div_wrap">
-		List of Purchase Orders. <span style="color: grey; font-size: small;">Click on a row to edit.</span>
+	<div id="rqList" class="div_wrap" style="display: none;">
+
+		<div class="align-right">
+			<button onclick="setRQId('new')">New RQ</button>
+		</div>
+		List of Purchase Orders.
+		<span style="color: grey;">Click on a row to edit.</span> <br><br>
+
 		<table id="rqListTable" class="tbl">
 			<!-- Field names in the caption element. These match  data source field names.
 				Must be one contiguous line, no spaces after or before commas.
 				Must have 1 to 1 correspondence with the th's below. To change the
 				items in the rq list, change the field names and the corresponding th's. -->
-			<caption style="display: none;">
+			<caption>
 				requisitionId,poNo,poDate,vendorName,rqAmount,justification,rcvDate,rcvBy,invoiceAmount,invoiceDate
 			</caption>
 			<tr>
@@ -37,17 +43,18 @@
 	</div>
 
 	<!-- requisition form section -->
-	<div id="rq" class="div_wrap">
+	<div id="rq" class="div_wrap" style="display: none;">
 
-		<div class="align-right"><button onclick="backend_simulator('rq_form_save')">Save</div>
-		<div class="align-left"><input type="submit" value="Back to List" onclick="location.href='?pn={page_name}'" /></div>
-		<center>Requisition Id <span id="rqId" style="font-size: x-large; font-weight: bold;"></span></center>
+		<div class="align-right">
+			<button onclick="main('button');">Save</button>
+		</div>
+		<div class="align-left"><button onclick="setRQId(0)">Back to List</button></div>
+		<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
 		<div style="clear: both;"></div>
 
 		<br />
 
 		<form id = "MyForm">
-
 			<div id="rqData">
 				<p style="margin-bottom: 6px;">
 				office: <input disabled name="initiatingOffice" value="" size=10 />
@@ -55,7 +62,7 @@
 				vendor: <input disabled name="vendorId" value="" size=5 />
 				</p>
 				<p style="margin-bottom: 6px;">
-				justification:<input disabled name="justification" value="" size=140 /><br style="margin-bottom: 4px;" />
+				justification:<input disabled name="justification" value="" size=100 />
 				</p>
 				rcvDate: <input type=text name="rcvDate" value="" size=12 />
 				rcvBy: <input type=text name="rcvBy" value="" size=12 />
@@ -86,6 +93,5 @@
 					<td style="text-align: right;"> <input type="text" name="rcvPrice" value="" size=6 style="text-align: right;" /> </td>
 				</tr>
 			</table>
-			
-	    </form>
+		</form>
 	</div>
