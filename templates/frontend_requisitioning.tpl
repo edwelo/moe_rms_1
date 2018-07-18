@@ -13,29 +13,40 @@
 				Must have 1 to 1 correspondence with the th's below. To change the
 				items in the rq list, change the field names and the corresponding th's. -->
 			<caption>
-				requisitionId,initiatingOffice,preparedByName,preparedDate,vendorName,rqAmount,justification,poNo,poDate
+				requisitionId,initiatingOffice,requestedBy,preparedByName,preparedDate,vendorName,numItems,rqAmount,justification,poNo,poDate
 			</caption>
 			<tr>
 				<th>Id</th>
-				<th>Office</th>
-				<th>PrepBy</th>
-				<th>PrepDate</th>
-				<th>Vendor</th>
-				<th style="text-align: right;">Amount</th>
+				<th>Office<br />Requested By</th>
+				<th>Prepared By<br />PrepDate</th>
+				<th>Vendor / Amount / numItems</th>
 				<th>Justification</th>
-				<th>PO</th>
-				<th>PO Date</th>
+				<th>PO No/Date</th>
 			</tr>
 			<tr style="vertical-align: top; cursor: pointer;">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td style="text-align: right;"></td>
-				<td></td>
-				<td></td>
-				<td></td>
+				<td>
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span><br />
+					<span></span>
+				</td>
+				<td>
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span>
+				</td>
 			</tr>
 		</table>
 	</div>
