@@ -63,6 +63,12 @@ if($_SESSION["uid"]) {
 $main_html = str_replace("{page_name}", $page_name, $main_html);
 $main_html = str_replace("{page_name_selector}", $page_name_selector, $main_html);
 
+if($page_name == "Distribution") {
+	$search = "js/frontend_functions_rq.js";
+	$replace = "js/frontend_functions_dist.js";
+	$main_html = str_replace($search, $replace, $main_html);
+}
+
 print $main_html;
 
 ?>

@@ -18,23 +18,12 @@ $rqItemsTable = "finance3.requisitions_items";
 $vendorTable = "finance3.vendors";
 $staffTable = "personnel.tblbiodata";
 
-if($_GET["a"]) {
-	$tmp["fld1"] = "fld1";
-	$tmp["fld2"] = "fld2";
-	echo "
-<form action='' method=post>
-	Use this to test post:
-	<input type=text name=RequisitionId value=5 />&nbsp;&nbsp;
-	<input type=text name=Data value='" . json_encode($tmp) . "' />&nbsp;&nbsp;
-	<input type=submit value=post />
-</form>
-<br />
-<br />
-	";
-}
-
 unset($rqId);
-if($_GET["requisitionId"] == "new" || is_numeric($_GET["requisitionId"])) $rqId = $_GET["requisitionId"];
+if($_GET["requisitionId"] == "new" || is_numeric($_GET["requisitionId"])) {
+	$rqId = $_GET["requisitionId"]; $type = "Data for Form";
+} else {
+	$type = "Data for List";
+}
 
 if(isset($_GET["save"])) {
 	require_once("includes/${page_name}_save.inc");
@@ -43,8 +32,14 @@ if(isset($_GET["save"])) {
 require_once("includes/${page_name}_read.inc");
 
 if($_GET["a"]) {
-	echo "<p>Read SQLs:</p>" . $sqlHTML;
-	echo "<pre>"; print_r($data); echo "</pre>";
+	echo "<p>Page Name: ${page_name}<br />Data Type: ${type}</p>";
+	echo "<p>Read SQLs:<br />" . $sqlHTML . "</p>";
+	
+	echo "<p>Result Array: <pre style='font-size: small;'>"; print_r($data); echo "</pre></p>";
+	$myJSON = json_encode($data);
+	
+	echo "<p>Returned JSON, encoded from above array:</p>";
+	echo "<p style='font-size: small;'>" . json_encode($data) . "</p>";
 } else {
 
 	//code testing, delete for production
