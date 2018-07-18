@@ -43,7 +43,7 @@ if($rqId && is_numeric($rqId)) {
 
 	$sql = "
 	SELECT
-		a.*, CONCAT(c.fname, ' ', c.lname) AS preparedByName,
+		a.*,
 		b.vendorName, d.description AS itemDescription, SUM(IF(d.requisitionId, 1, 0)) AS numItems,
 		SUM(ROUND(d.quantity * d.price, 3)) AS rqAmount
 	FROM
@@ -55,6 +55,10 @@ if($rqId && is_numeric($rqId)) {
 		a.isValid NOT LIKE 'void%' AND d.isValid NOT LIKE 'void%'
 	GROUP BY a.requisitionId
 	";
+
+	if($page_name == "Receiving" || $page_name == "Distribution") {
+		$sql = str_replace("a.isValid NOT LIKE", "a.poNo IS NOT NULL AND poNo != '' AND a.isValid NOT LIKE", $sql);
+	}
 
 	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 

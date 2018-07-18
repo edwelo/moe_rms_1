@@ -1,9 +1,6 @@
 	<!-- requisition list section -->
 	<div id="rqList" class="div_wrap" style="display: none;">
 
-		<div class="align-right">
-			<button onclick="setRQId('new')">New RQ</button>
-		</div>
 		List of Purchase Orders.
 		<span style="color: grey;">Click on a row to edit.</span> <br><br>
 
@@ -13,31 +10,40 @@
 				Must have 1 to 1 correspondence with the th's below. To change the
 				items in the rq list, change the field names and the corresponding th's. -->
 			<caption>
-				requisitionId,poNo,poDate,vendorName,rqAmount,justification,rcvDate,rcvBy,invoiceAmount,invoiceDate
+				requisitionId,poNo,poDate,poAmount,initiatingOffice,requestedBy,vendorName,numItems,justification,rcvBy,rcvDate
 			</caption>
 			<tr>
 				<th>Id</th>
-				<th>PO</th>
-				<th>PO Date</th>
-				<th>Vendor</th>
-				<th style="text-align: right;">Amount</th>
+				<th>PO / Date / Amount</th>
+				<th>Office<br />Requested By</th>
+				<th>Vendor / numItems</th>
 				<th>Justification</th>
-				<th>rcvDate</th>
-				<th>rcvBy</th>
-				<th style="text-align: right;">invAmount</th>
-				<th>invDate</th>
+				<th>Rcv By/Date</th>
 			</tr>
 			<tr style="vertical-align: top; cursor: pointer;">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td style="text-align: right;"></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td style="text-align: right;"></td>
-				<td></td>
+				<td>
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span><br />
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span>
+				</td>
+				<td>
+					<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span>
+				</td>
 			</tr>
 		</table>
 	</div>
@@ -56,41 +62,41 @@
 
 		<form id = "MyForm">
 			<div id="rqData">
-				<p style="margin-bottom: 6px;">
-				office: <input disabled name="initiatingOffice" value="" size=10 />
-				rqBy: <input disabled name="requestedBy" value="" size=10 />
-				vendor: <input disabled name="vendorId" value="" size=5 />
-				</p>
-				<p style="margin-bottom: 6px;">
-				justification:<input disabled name="justification" value="" size=100 />
-				</p>
-				rcvDate: <input type=text name="rcvDate" value="" size=12 />
-				rcvBy: <input type=text name="rcvBy" value="" size=12 />
-				invNo:<input name="invoiceNo" value="" size=10 />
-				invAmount: <input type=text name="invoiceAmount" value="" size=5 />
-				invDate: <input type=text name="invoiceDate" value="" size=12 />
+				PO Info 		<input disabled size = "10%" type="text" name="poNo" value=""/>
+								<input disabled size = "10%" type="text" name="poDate" value="" />
+								$<input disabled size = "10%" type="text" name="poAmount" value=""  />
+				RcvBy: 	   <input type=text name="rcvBy" value="" size = 25 />
+				RcvDate: 	<input type="text" name="rcvDate" value="" size = 12 /><br />
+				Office Info: 	<input disabled type="text" name="initiatingOffice" value="" />
+					 			<input disabled type="text" name="requestedBy" value="" /><br />
+				Vendor: 		<input disabled type="text" name="vendorName" value="" size=100 /><br />
+				Justification:	<input disabled type="text" name="justification" value="" size = 100% /><br />
 			</div>
 
 			<table id = "items_table" class="tbl">
 				<tr>
-					<th style="color: grey; text-align: right;"> Id </th>
-					<th style="color: grey;"> Acc </th>
-					<th style="color: grey;"> Description </th>
-					<th style="text-align: right; color: grey;"> Qty </th>
-					<th style="color: grey;"> Unit </th>
-					<th style="text-align: right; color: grey;"> Price </th>
-					<th style="text-align: right;"> rcvQty </th>
-					<th style="text-align: right;"> rcvPrice </th>
+					<th> Id </th>
+					<th> Org </th>
+					<th> SAcc </th>
+					<th> Qty </th>
+					<th> Unit </th>
+					<th> Price </th>
+					<th> Extended</th>
+					<th> Description </th>
+					<th> Rcv Qty </th>
+					<th> Rcv Price </th>
 				</tr>
 				<tr>
-					<td style="text-align: right;"> <input disabled type="text" name="requisitionItemId" value="" style="width: 3em; text-align: right;" /> </td>
-					<td> <input disabled type="text" name="acc" value="" size=4 /> </td>
-					<td> <input disabled type="text" name="description" value="" size=25 /> </td>
-					<td style="text-align: right;"> <input disabled type="text" name="quantity" value="" size=4 style="text-align: right;" /> </td>
-					<td> <input disabled type="text" name="unit" value="" size=5 /> </td>
-					<td style="text-align: right;"> <input disabled type="text" name="price" value="" size=6 style="text-align: right;" /> </td>
-					<td style="text-align: right;"> <input type="text" name="rcvQuantity" value="" size=4 style="text-align: right;" /> </td>
-					<td style="text-align: right;"> <input type="text" name="rcvPrice" value="" size=6 style="text-align: right;" /> </td>
+					<td> <input disabled type="text" name="requisitionItemId" value="" style="text-align: right;" /> </td>
+					<td> <input disabled type="text" name="org" value="" /> </td>
+					<td> <input disabled type="text" name="acc" value="" /> </td>
+					<td> <input disabled type="text" name="quantity" value="" style="text-align: right;" /> </td>
+					<td> <input disabled type="text" name="unit" value="" /> </td>
+					<td> <input disabled type="text" name="price" value="" style="text-align: right;" /> </td>
+					<td> <input disabled type="text" name="extended" value="" style="text-align: right;" /> </td>
+					<td> <input disabled type="text" name="description" value="" /> </td>
+					<td> <input type="text" name="rcvQuantity" value="" style="text-align: right;" /> </td>
+					<td> <input type="text" name="rcvPrice" value="" /> </td>
 				</tr>
 			</table>
 		</form>
