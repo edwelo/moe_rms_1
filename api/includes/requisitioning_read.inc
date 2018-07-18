@@ -8,7 +8,7 @@ if($rqId && is_numeric($rqId)) {
 
 	$sql = "
 		SELECT
-			a.*, CONCAT(c.fname, ' ', c.lname) AS preparedByName,
+			a.*,
 			b.vendorName, d.description,
 			SUM(IF(d.requisitionId, 1, 0)) AS numItems,
 			SUM(ROUND(d.quantity * d.price, 3)) AS rqAmount
