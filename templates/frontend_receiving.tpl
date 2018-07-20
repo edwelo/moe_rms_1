@@ -10,15 +10,16 @@
 				Must have 1 to 1 correspondence with the th's below. To change the
 				items in the rq list, change the field names and the corresponding th's. -->
 			<caption>
-				requisitionId,poNo,poDate,poAmount,initiatingOffice,requestedBy,vendorName,numItems,justification,rcvBy,rcvDate
+				requisitionId,poNo,poType,poDate,poAmount,vendorName,numItems,justification,rcvActivityCount,rcvActivityAmount,distribActivityCount,distribActivityAmount,statusDate,status
 			</caption>
 			<tr>
 				<th>Id</th>
-				<th>PO / Date / Amount</th>
-				<th>Office<br />Requested By</th>
+				<th>PO No/Type<br />/Date/Amount</th>
 				<th>Vendor / numItems</th>
 				<th>Justification</th>
-				<th>Rcv By/Date</th>
+				<th>Rcv Activity</th>
+				<th>Distr Activity</th>
+				<th>Status</th>
 			</tr>
 			<tr style="vertical-align: top; cursor: pointer;">
 				<td>
@@ -27,6 +28,14 @@
 				<td>
 					<span></span><br />
 					<span></span><br />
+					<span></span><br />
+					$<span></span>
+				</td>
+				<td>
+					<span></span><br />
+					<span></span>
+				</td>
+				<td>
 					<span></span>
 				</td>
 				<td>
@@ -35,9 +44,6 @@
 				</td>
 				<td>
 					<span></span><br />
-					<span></span>
-				</td>
-				<td>
 					<span></span>
 				</td>
 				<td>
