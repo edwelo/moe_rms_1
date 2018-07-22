@@ -3,12 +3,13 @@
 	<title> MOE Expenditure Tracker </title>
 
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="js/frontend_functions_rq.js"></script>
+    <script src="js/frontend_{pn}.js?{jsForceLoad}"></script>
     <script src="js/frontend_main.js"></script>
 
 	<script type="text/javascript">
 		var test = false; //global boolean for various tests
 		var rqId = 0; //0 for list view. number or 'new' for form view.
+		var rcvId = 0; //0 for rcv list view. number or 'new' for form view.
 		//loads the http queries
 		var qGET = new URLSearchParams(location.search);
 		var page_name = "";

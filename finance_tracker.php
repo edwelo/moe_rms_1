@@ -11,6 +11,9 @@ if($_POST['log_action']=="logout") { $_SESSION = array(); session_destroy(); $ui
 //AUTHENTICATION
 if($_POST["username"] && $_POST["password"]) require_once("includes/authenticate.inc");
 
+//include markup parser
+require_once("includes/parsedown.inc");
+
 //Page Setup and Print
 
 $main_html = file_get_contents("templates/main.tpl");
@@ -45,6 +48,11 @@ if($_POST["log_action"] == "login") {
 } else {
 
 	$page_content = file_get_contents("templates/frontend_" . strtolower(str_replace(" ", "", $page_name)) . ".tpl");
+	if($page_name == "Info") {
+		$pd = new Parsedown();
+		$pd_content = file_get_contents("templates/frontend_" . strtolower(str_replace(" ", "", $page_name)) . ".md");
+		$page_content = str_replace("{content}", $pd->text($pd_content), $page_content);
+	}
 
 }
 
@@ -61,7 +69,9 @@ if($_SESSION["uid"]) {
 }
 
 $main_html = str_replace("{page_name}", $page_name, $main_html);
+$main_html = str_replace("{pn}", strtolower($page_name), $main_html);
 $main_html = str_replace("{page_name_selector}", $page_name_selector, $main_html);
+$main_html = str_replace("{jsForceLoad}", rand(0, 50), $main_html);
 
 if($page_name == "Distribution") {
 	$search = "js/frontend_functions_rq.js";

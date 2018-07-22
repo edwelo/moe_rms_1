@@ -70,12 +70,13 @@
 				RqBy: 			<input type="text" name="requestedBy" value="" />
 				PrepBy: 		<input disabled type="text" name="preparedByName" value="" /><input type=hidden name="preparedById" value="" />
 				PrepDate: 		<input size = "10%" type="text" name="preparedDate" value=""/><br />
+				RqAmount: 	   $<input size = "10%" type=text name="rqAmount" value=""/>
+				RqApprvDate: 	<input size = "10%" type="text" name="approvedDate" value=""/>
 				Vendor: 		<input size = "10%" type="text" name="vendorId" value=""/>
 								<input disabled name="vendorName" value="" /> <br>
-				Justification:	<input type="text" name="justification" value="" size = 100%/>
-				RqAmount: 	   $<input size = "10%" type=text name="rqAmount" value=""/>
-				RqApprvDate: 	<input size = "10%" type="text" name="moeApprovedDate" value=""/>
+				Justification:	<input type="text" name="justification" value="" size = 100%/><br />
 				PO: 			<input size = "10%" type="text" name="poNo" value=""/>
+				PO Type: 		<input size = "10%" type="text" name="poType" value=""/>
 				PO Date:		<input size = "10%" type="text" name="poDate" value="" />
 				PO Amount: 	   $<input size = "10%" type="text" name="poAmount" value=""  />
 			</div>

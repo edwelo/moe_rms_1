@@ -8,34 +8,47 @@ if($rqId && is_numeric($rqId)) {
 
 	$sql = "
 		SELECT
-			a.*,
-			b.vendorName, d.description,
-			SUM(IF(d.requisitionId, 1, 0)) AS numItems,
-			SUM(ROUND(d.quantity * d.price, 3)) AS rqAmount
+			*
 		FROM
-			${rqTable} a LEFT JOIN
-			${vendorTable} b ON a.vendorId=b.vendorId LEFT JOIN
-			${staffTable} c ON a.preparedById=c.persid LEFT JOIN
-			${rqItemsTable} d ON a.requisitionId=d.requisitionId AND d.isValid NOT LIKE 'x%'
+			${rqTable} 
 		WHERE
-			a.isValid NOT LIKE 'void%' AND
-			a.requisitionId=${rqId}";
+			isValid NOT LIKE 'void%' AND
+			requisitionId=${rqId}
+		";
 
 	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
 	$rs = $db->query($sql) or die("GET_RQ: " . $db->error . $sqlHTML);
 	$data["rq"] = $rs->fetch_assoc();
 
-	//items for the one rq
+	//receivings for the one rq
 
-	$sql2 = "SELECT * FROM ${rqItemsTable} WHERE requisitionId = ${rqId} AND isValid NOT LIKE 'x%'";
+	$sql2 = "SELECT 
+				* 
+			FROM 
+				${rcvTable} a LEFT JOIN 
+				${rcvItemsTable} b ON a.receivingId=b.receivingId
+			WHERE 
+				a.requisitionId = ${rqId} AND 
+				a.isValid NOT LIKE 'x%' AND 
+				b.isValid NOT LIKE 'x%'
+			";
 
 	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql2) . "</p>";
 
 	$rs = $db->query($sql2) or die("GET_ITEMS: " . $db->error);
 	if(mysqli_num_rows($rs)) {
-		while($tmp = $rs->fetch_assoc()) { $data["rq"]["items"][] = $tmp; }
+		while($tmp = $rs->fetch_assoc()) { 
+			if(!isset($data["rq"]["rcvlist"][$tmp["receivingId"]])) {
+				$array1 = array_slice($tmp, 0, 22);
+				$array1["items"] = array();
+				$data["rq"]["rcvlist"][$tmp["receivingId"]] = $array1;
+			}
+			$array2 = array_slice($tmp, 22, 13);			
+			$data["rq"]["rcvlist"][$tmp["receivingId"]]["items"][] = $array2;
+		}
 	}
+	$data["rq"]["rcvlist"] = array_values($data["rq"]["rcvlist"]);
 
 } else {
 
