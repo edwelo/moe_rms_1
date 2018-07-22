@@ -2,12 +2,68 @@
 <head>
 	<title> Requisition Print Form </title>
 
-    <link rel="stylesheet" type="text/css" href="css/req-print.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/req-print.css"> -->
     <!-- <script src="js/frontend_functions_rq.js"></script> -->
  	<style type="text/css">
  	
+		#container {
+			margin: auto; 
+			width: 7in;
+			/*height: 9.25in;*/
+			padding: 5px;
+		}
+
+		#container_table { border: 1px solid black; border-collapse: collapse; padding: 0; margin: 0; }
+		#container_table th td { border: 1px solid black; padding: 0 4px; margin: none; }
+
+		#first {
+			height: 70px;
+		}
+
+		#second {
+			height: 50px;
+		}
+
+		.footer { border: 1px solid black; }
+		.footer th td { border: 1px solid black; padding: 0 4px; }
+
  		.lbl1 { font-size: small; color: grey; }
- 	
+ 		
+		#items {
+			/*border: 1px solid black;*/
+			width: 100%;
+			border: none;
+			padding: none;
+			margin: none;
+			border-collapse: collapse;
+			font-size: small;
+		}
+
+		#items tr {
+			height: auto;
+			border-bottom: 1px;
+		}
+
+		#items td, th {
+			height: auto;
+			/*border: none;*/
+			border: 1px solid grey;
+			padding: 2px 4px;
+			/*font-size: small;*/
+			/*overflow: hidden;*/
+		}
+
+		@media print {
+			body * {
+				visibility: hidden;
+			}
+			#container * {
+				visibility: visible;
+			}
+			#container {
+				position: absolute;
+			}
+ 		}
  	</style>
     <script type="text/javascript">
     
@@ -16,14 +72,14 @@
 
 			document.getElementById("rqId").innerHTML += myRequisition["requisitionId"];
 
-			var section1 = document.getElementById("firstx").rows[1];
+			var section1 = document.getElementById("first");
 
 			section1.cells[0].innerHTML += myRequisition["initiatingOffice"];
 			section1.cells[1].innerHTML += myRequisition["preparedByName"];
 			section1.cells[2].innerHTML += myRequisition["preparedDate"];
 			section1.cells[3].innerHTML += myRequisition["poNo"];
 
-			var section2 = document.getElementById("second").rows[0];
+			var section2 = document.getElementById("second");
 
 			section2.cells[0].innerHTML += myRequisition["vendorId"] + "<br/>" + myRequisition["vendorName"]
 
@@ -110,56 +166,43 @@
 <div id = "container">
 	<div id = "page">
 
-		<p style = "text-align: left">REPUBLIC OF PALAU</p>
-		<p><strong>REQUISITION</strong></p> 
-
-		<p style = "text-align: left" id = "rqId"> Requisition Id: </p>
-
-		<table id = "firstx">
-			<tbody>
-				<tr style="height: auto;">
-					<td style="border-bottom: none;">
-						<span class=lbl1>Requesting Office:</span>
-					</td>
-					<td style="border-bottom: none;">
-						<span class=lbl1>Prepared By:</span>
-					</td>
-					<td style="border-bottom: none;">
-						<span class=lbl1>Date Entered:</span>
-					</td>
-					<td style="border-bottom: none;">
-						<span class=lbl1>Purchase Order No:</span>
-					</td>
-				</tr>
-				<tr style="height: 30px; vertical-align: baseline;">
-					<td style="border-top: none;"></td>
-					<td style="border-top: none;"></td>
-					<td style="border-top: none;"></td>
-					<td style="border-top: none;"></td>
-				</tr>
-			</tbody>
-		</table>
-
-		<table id = "second">
-			<tbody>
-				<tr>
-					<td>
+		<table id="container_table">
+			<tr>
+				<td colspan=6>
+					<span style = "text-align: left">REPUBLIC OF PALAU</span><br />
+					<h1 style = "text-align: center;"><strong>REQUISITION</strong></h1> 
+					<span style = "text-align: left" id = "rqId"> Requisition Id: </span>
+				</td>
+			</tr>
+			<tr id = "first">
+				<td colspan=2 style="200px;">
+					<span class=lbl1>Requesting Office:</span><br />
+				</td>
+				<td colspan=2 style="200px;">
+					<span class=lbl1>Prepared By:</span><br />
+				</td>
+				<td style="100px;">
+					<span class=lbl1>Date Entered:</span><br />
+				</td>
+				<td style="100px;">
+					<span class=lbl1>Purchase Order No:</span><br />
+				</td>
+			</tr>
+			<tr id = "second">
+				<td colspan=3 style="width: 300px;">
 					<span class=lbl1>Vendor Name, Number and Address:</span><br />
-					</td>
-					<td>
+				</td>
+				<td colspan=3>
 					<span class=lbl1>Delivery Name and Address:</span><br />
 						Ministry of Education<br />
 						Main Street Madalaii Box 189<br />
 						Koror, PW 96940<br />
 						<span style="font-size: small;">Tel: +680 488-6425 &nbsp; fax: +680 488-8465</span>
 					</td>
-				</tr>
-			</tbody>
-		</table>
-		
-		<table id="items_container">
-			<tr>
-				<td>
+				</td>
+			</tr>
+			<tr id = "third">
+				<td colspan=6 style="height: 420px;">
 					<table id = "items">
 						<thead>
 							<tr id="item_heads">
@@ -201,51 +244,47 @@
 					</table>
 				</td>
 			</tr>
+			<tr>
+				<td colspan=6 id="justif" style="height: 80px;">
+				
+				</td>
+			</tr>
+			<tr class="footer">
+				<td colspan=2>
+					<span class=lbl1>Approved by Director:</span><br /><br />
+				</td>
+				<td>
+					<span class=lbl1>Date:</span><br /><br />
+				</td>
+				<td colspan=2>
+					<span class=lbl1>Approved by Procurement Officer:</span><br /><br />
+					<span style="font-size: small;">Millan Isak</span>
+				</td>
+				<td>
+					<span class=lbl1>Date:</span><br /><br />
+				</td>
+			</tr>
+			<tr class="footer">
+				<td colspan=2>
+					<span class=lbl1>Approved by Minister:</span><br /><br />
+					<span style="font-size: small;">Sinton Soalablai</span>
+				</td>
+				<td>
+					<span class=lbl1>Date:</span><br /><br />
+				</td>
+				<td colspan=2>
+					<span class=lbl1>Funds Availability:</span><br /><br />
+				</td>
+				<td>
+					<span class=lbl1>Date:</span><br /><br />
+				</td>
+			</tr>
 		</table>
-		<br/><br/> 
-
-		<div id="justif"></div>
-
-		<footer>
-			<table id = "last">
-				<tbody>
-					<tr>
-						<td style="width: 35%;">
-							<span class=lbl1>Approved by Director:</span><br /><br />
-						</td>			
-						<td style="width: 15%;">
-							<span class=lbl1>Date:</span><br /><br />
-						</td>			
-						<td style="width: 35%;">
-							<span class=lbl1>Approved by Procurement Officer:</span><br /><br />
-						</td>			
-						<td>
-							<span class=lbl1>Date:</span><br /><br />
-						</td>
-					</tr>
-
-					<tr>
-						<td>
-							<span class=lbl1>Approved by Minister:</span><br /><br />
-							<span style="font-size: small;">Sinton Soalablai</span>
-						</td>
-						<td>
-							<span class=lbl1>Date:</span><br /><br />
-						</td>
-						<td>
-							<span class=lbl1>Funds Availability:</span><br /><br />
-						</td>
-						<td>
-							<span class=lbl1>Date:</span><br /><br />
-						</td>
-					</tr>
-
-				</tbody>
-			</table>
-		</footer>
 
 	</div>
 </div>
+
+<br />
 
 </body>
 </html>
