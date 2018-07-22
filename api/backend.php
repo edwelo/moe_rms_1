@@ -68,10 +68,8 @@ if($_GET["a"]) {
 	echo "<p>Read SQLs:</p>" . $sqlHTML;
 	echo "<pre>"; print_r($data); echo "</pre>";
 } else {
-
 	//code testing, delete for production
 	#if($save_activity) $data["save_activity"] = $save_activity;
-
 	$myJSON = json_encode($data);
 	echo $myJSON;
 }
