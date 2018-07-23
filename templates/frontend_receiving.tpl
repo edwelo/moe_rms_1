@@ -57,7 +57,13 @@
 	<!-- requisition section -->
 	<div id="rq" class="div_wrap" style="display: none;">
 
-		<div class="align-right"><button id="btnRcvAction">&nbsp;&nbsp;</button></div>
+		<div class="align-right">
+			<!-- this button's action is set by js to either
+				New ... creates a new receiving by calling setRcvId('new')
+				Save ... saves the receiving by calling save()
+			-->
+			<button id="btnRcvAction">&nbsp;&nbsp;</button>
+			</div>
 		<button onclick="setRQId(0)">Back to List</button>
 		<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
 		<div style="clear: both;"></div>
@@ -119,7 +125,7 @@
 				
 				<input type="hidden" name="requisitionId" value="" />
 
-				<div style="float: left;">Office:<br /><input type=text name="initiatiingOffice" value="" size=25 /></div>
+				<div style="float: left;">Office:<br /><input type=text name="initiatingOffice" value="" size=25 /></div>
 				<div style="float: left;">RqBy:<br /><input type=text name="requestedBy" value="" size=25 /></div>
 				<div style="float: left;">RqDate:<br /><input type="text" name="requestedDate" value="" size=12 /></div>
 				<div style="float: left;">PrepBy:<br /><input type=text name="preparedBy" value="" size=25 /></div>
@@ -150,26 +156,54 @@
 
 			<table id = "rcvTable" class="tbl">
 				<tr>
-					<th> Id </th>
-					<th> RqItemInfo </th>
-					<th style="text-align: right;"> Qty </th>
-					<th> Unit </th>
-					<th style="text-align: right;"> Price </th>
-					<th style="text-align: right;"> Extended</th>
-					<th> Description </th>
-					<th style="text-align: center;">Del</th>
+					<th style="width: 30px;"> Id </th>
+					<th style="width: 30px;"> RqItemInfo </th>
+					<th style="width: 30px; text-align: right;"> Qty </th>
+					<th style="width: 30px;"> Unit </th>
+					<th style="width: 30px; text-align: right;"> Price </th>
+					<th style="width: 30px;" style="width: 30px; text-align: right;"> Extended</th>
+					<th style="width: 30px;"> Description </th>
+					<th style="width: 30px; text-align: center;">Del</th>
 				</tr>
+			
+				<!--
+					The items should have the following fields:
+					receivingItemId, receivingId, requisitionItemId, quantity, unit, price, 
+					extended, description, del
+					The fields must be set up properly in the html so all the js 
+					has to do is read them in.
+				-->
+
 				<tr>
-					<td><input type="hidden" name="receivingItemId" value="" /><data value="receivingItemId"></data></td>
-					<td><input disabled type="text" name="requisitionItemId" value="" style="width: 3em; text-align: center;" /> <data value="org"></data> <data value="acc"></data></td>
-					<td><input style="text-align: right;" type="text" name="quantity" value="" size=5 /></td>
-					<td><data value="unit"></data></td>
-					<td><input style="text-align: right;" type="text" name="price" value="" size=8 /></td>
-					<td style="text-align: right;"><data value="extended"></data></td>
-					<td><input type="text" name="description" value="" /></td>
-					<td style="cursor: pointer; text-align: center;">
-						<input style="border: 1px solid #17445E; border-radius: 3px; color: white; background-color: #216288; text-align: center;" type="checkbox" name="del" value=0  onclick="deleteRcvItem(this);" />
-						</td>
+					<td>
+						<input type="hidden" name="receivingItemId" value="" />
+						<input type="hidden" name="receivingId" value="" />
+						<data value="receivingItemId"></data>
+					</td>
+					<td>
+						<input type="hidden" name="requisitionItemId" value="" />
+						<data value="requisitionItemId"></data>
+						<data value="org"></data>
+						<data value="acc"></data>
+					</td>
+					<td style="text-align: right;">
+						<input type="text" name="quantity" value="" style="width: 8em; text-align: right;" onchange="extPriceCalc(this);" />
+					</td>
+					<td>
+						<input type="text" name="unit" value="" style="width: 6em;"  />
+					</td>
+					<td style="text-align: right;">
+						<input type="text" name="price" value="" style="width: 8em; text-align: right;" />
+					</td>
+					<td style="text-align: right;">
+						<input type="text" name="extended" value="" readonly style="width: 8em; text-align: right;" />
+					</td>
+					<td>
+						<input type="text" name="description" value="" />
+					</td>
+					<td>
+						<input type="checkbox" name="del" value=0  onclick="deleteRcvItem(this);" />
+					</td>
 				</tr>
 			</table>
 			<button style="margin-bottom: 2px; padding: 0 4px 2px 4px; height: auto; border-radius: 2px;" type="button" onclick="copyRow('rcvTable');">

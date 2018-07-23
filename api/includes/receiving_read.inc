@@ -20,34 +20,49 @@ if($rqId && is_numeric($rqId)) {
 
 	$rs = $db->query($sql) or die("GET_RQ: " . $db->error . $sqlHTML);
 	$data["rq"] = $rs->fetch_assoc();
+	$data["rq"]["rcvlist"] = array();
 
-	//receivings for the one rq
+	//receivings and items for the one rq
 
-	$sql2 = "SELECT 
-				* 
-			FROM 
-				${rcvTable} a LEFT JOIN 
-				${rcvItemsTable} b ON a.receivingId=b.receivingId
+	$sql = "SELECT * 
+			FROM ${rcvTable} 
 			WHERE 
+				requisitionId = ${rqId} AND 
+				isValid NOT LIKE 'x%'";
+
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+
+	$rs = $db->query($sql) or die("GET_RCV: " . $db->error);
+	if(mysqli_num_rows($rs)) {
+		while($tmp = $rs->fetch_assoc()) { 
+			unset($tmp["isValid"]);
+			$tmp["items"] = array();
+			$data["rq"]["rcvlist"][$tmp["receivingId"]] = $tmp;
+		}
+	}
+
+	$sql = "SELECT 
+				b.*
+			FROM 
+				${rcvTable} a, ${rcvItemsTable} b 
+			WHERE 
+				a.receivingId=b.receivingId AND 
 				a.requisitionId = ${rqId} AND 
 				a.isValid NOT LIKE 'x%' AND 
 				b.isValid NOT LIKE 'x%'
 			";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql2) . "</p>";
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
-	$rs = $db->query($sql2) or die("GET_ITEMS: " . $db->error);
+	$rs = $db->query($sql) or die("GET_RCV_ITEMS: " . $db->error);
 	if(mysqli_num_rows($rs)) {
 		while($tmp = $rs->fetch_assoc()) { 
-			if(!isset($data["rq"]["rcvlist"][$tmp["receivingId"]])) {
-				$array1 = array_slice($tmp, 0, 22);
-				$array1["items"] = array();
-				$data["rq"]["rcvlist"][$tmp["receivingId"]] = $array1;
-			}
-			$array2 = array_slice($tmp, 22, 13);			
-			$data["rq"]["rcvlist"][$tmp["receivingId"]]["items"][] = $array2;
+			unset($tmp["isValid"]);
+			$data["rq"]["rcvlist"][$tmp["receivingId"]]["items"][] = $tmp;
 		}
 	}
+
+	//Reset the indexes so it is non-associative for later use by javascript
 	$data["rq"]["rcvlist"] = array_values($data["rq"]["rcvlist"]);
 
 } else {
