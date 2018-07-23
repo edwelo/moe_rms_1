@@ -1,7 +1,6 @@
 <?php
-//Distribution module
 //read rq, called by backend.php
-//eo 180719
+//eo 180717
 
 if($rqId && is_numeric($rqId)) {
 
@@ -9,74 +8,115 @@ if($rqId && is_numeric($rqId)) {
 
 	$sql = "
 		SELECT
-			a.*,
-			b.vendorName, d.description,
-			SUM(IF(d.requisitionId, 1, 0)) AS numItems,
-			SUM(ROUND(d.quantity * d.price, 3)) AS rqAmount
+			*
 		FROM
-			${rqTable} a LEFT JOIN
-			${vendorTable} b ON a.vendorId=b.vendorId LEFT JOIN
-			${staffTable} c ON a.preparedById=c.persid LEFT JOIN
-			${rqItemsTable} d ON a.requisitionId=d.requisitionId AND d.isValid NOT LIKE 'x%'
+			${distribTable} a LEFT JOIN 
+			${distribItemsTable} b ON a.distributionId=b.distributionId
 		WHERE
-			a.isValid NOT LIKE 'void%' AND
-			a.requisitionId=${rqId}";
+			a.isValid NOT LIKE 'x%' AND 
+			b.isValid NOT LIKE 'x%' AND
+			a.distributionId=${rqId}";
 
 	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
 	$rs = $db->query($sql) or die("GET_RQ: " . $db->error . $sqlHTML);
-	$data["rq"] = $rs->fetch_assoc();
-
-	//items for the one rq
-
-	$sql2 = "SELECT * FROM ${rqItemsTable} WHERE requisitionId = ${rqId} AND isValid NOT LIKE 'x%'";
-
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql2) . "</p>";
-
-	$rs = $db->query($sql2) or die("GET_ITEMS: " . $db->error);
+	
+	$data["rq"] = array();
+	
 	if(mysqli_num_rows($rs)) {
-		while($tmp = $rs->fetch_assoc()) { $data["rq"]["items"][] = $tmp; }
+		while($tmp = $rs->fetch_assoc()) { 
+			$distId = $tmp["distributionId"];
+			$array1 = array_slice($tmp, 0, 12);
+			$array2 = array_slice($tmp, 12, 9);
+			if(!isset($data["rq"]["distributionId"])) {
+				$array1["numItems"] = 0;
+				$array1["items"] = array();
+				$array1["rcv"] = array();
+				$data["rq"] = $array1;
+			}
+			$data["rq"]["numItems"]++;
+			$data["rq"]["items"][] = $array2; 
+		}
 	}
+	
+	$sql = "SELECT * 
+			FROM
+				${rcvTable} a LEFT JOIN
+				${rcvItemsTable} b ON a.receivingId=b.receivingId
+			WHERE 
+				a.isValid NOT LIKE 'x%' AND
+				b.isValid NOT LIKE 'x%'";
 
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+
+	$rs = $db->query($sql) or die("GET_RCVs: " . $db->error . $sqlHTML);
+	
+	if(mysqli_num_rows($rs)) {
+		while($tmp = $rs->fetch_assoc()) { 
+			$rcvId = $tmp["receivingId"];
+			$array1 = array_slice($tmp, 0, 22);
+			$array2 = array_slice($tmp, 22, 13);
+			if(!isset($tmp2[$rcvId])) {
+				$array1["numItems"] = 0;
+				$array1["items"] = array();
+				$tmp2[$rcvId] = $array1;
+			}
+			$tmp2[$rcvId]["numItems"]++;
+			$tmp2[$rcvId]["items"][] = $array2; 
+		}
+	}
+	
+	$data["rq"]["rcv"] = array_values($tmp2);
+	
+	
 } else {
-	//list of rqs for left distribution table
+
+	//list of rqs
 
 	$sql = "
 	SELECT
-		a.requisitionId, a.poNo, a.poAmount, a.vendorName, a.initiatingOffice, 
-		a.preparedByName, a.justification,
-		b.requisitionItemId,
-		b.org, b.costCenter, b.acc, b.quantity, b.description
+		a.*,
+		SUM(IF(b.distributionId, 1, 0)) AS numItems
 	FROM
-		${rqTable} a, ${rqItemsTable} b 
+		${distribTable} a LEFT JOIN
+		${distribItemsTable} b ON a.distributionId=b.distributionId
 	WHERE
-		a.requisitionId=b.requisitionId AND
-		a.isValid NOT LIKE 'void%' AND 
-		b.isValid NOT LIKE 'x%' AND
-		a.poNo IS NOT NULL AND
-		a.poNo != ''
+		a.isValid NOT LIKE 'void%' AND b.isValid NOT LIKE 'void%'
+	GROUP BY a.distributionId
 	";
-
-	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
-	while($tmp = $rs->fetch_assoc()) {
-		$rqId = $tmp["requisitionId"];
-		$array1 = array_slice($tmp, 0, 7);
-		$array2 = array_slice($tmp, 7, 6);
-		
-		if(!isset($tmp2[$rqId])) {
-			$tmp2[$rqId] = $array1;
-		}
-		
-		$tmp2[$rqId]["items"][] = $array2;
-		
-	}
-	
-	foreach($tmp2 as $row) {
-		$data["rqlist"][] = $row;
-	}
 
 	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
+	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
+	while($tmp = $rs->fetch_assoc()) {
+		$tmp["refPOs"] = "";
+		$data["rqlist"][$tmp["distributionId"]] = $tmp;
+	}
+	
+	$sql2 = "SELECT
+				a.distributionId,
+				a.distributionItemId,
+				a.requisitionItemId,
+				b.requisitionId,
+				c.poNo
+			FROM 
+				${distribItemsTable} a, 
+				${rqItemsTable} b,
+				${rqTable} c
+			WHERE 
+				a.requisitionItemId=b.requisitionItemId AND 
+				b.requisitionId=c.requisitionId
+			GROUP BY a.distributionId, c.poNo";
+
+
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql2) . "</p>";
+
+	$rs = $db->query($sql2) or die("GET_PO_LIST: " . $db->error . $sqlHTML);
+	while($tmp = $rs->fetch_assoc()) {
+		$data["rqlist"][$tmp["distributionId"]]["refPOs"] .= $tmp["poNo"] . " ";
+	}
+	
+	$data["rqlist"] = array_values($data["rqlist"]);
 }
 
 

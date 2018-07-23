@@ -1,4 +1,4 @@
-	<div id="listView">
+	<div id="listView" class="div_wrap">
 
 		List of Distributions.
 		<span style="color: grey;">Click on a row to edit.</span> <br><br>
@@ -38,14 +38,22 @@
 		</table>
 
 	</div>
-	<div id="formView">
+	<div id="formView" class="div_wrap">
+
+		<div class="align-right">
+			<button onclick="print_rq();">Print</button>
+			<button onclick="main('button');">Save</button>
+		</div>
+		<div class="align-left"><button onclick="setRQId(0)">Back to List</button></div>
+		<center>Distribution ID <span id="rqId" style="font-weight: bold;"></span></center>
+		<div style="clear: both;"></div>
 
 		<div id = "setheight" class = "align-left" style="width: 40%;"">
 		  <table id = "distTable">
-			<caption> poNo, poItemNo, requisitionItemId, description, quantity </caption>
+			<caption> receivingId, receivingItemId, requisitionItemId, description, quantity </caption>
 			<tr> 
-			  <th> PO# </th>
-			  <th> PO Item# </th>
+			  <th> RcvId </th>
+			  <th> RcvItemId </th>
 			  <th> Req Item Id </th>
 			  <th> Description </th>
 			  <th> Quantity </th>

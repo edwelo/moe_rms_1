@@ -56,6 +56,7 @@ $vendorTable = "finance4.vendors";
 $staffTable = "personnel.tblbiodata";
 $rcvTable = "finance4.receiving";
 $rcvItemsTable = "finance4.receiving_items";
+$distribTable = "finance4.distributions";
 $distribItemsTable = "finance4.distributions_items";
 
 if(isset($_GET["save"])) {
