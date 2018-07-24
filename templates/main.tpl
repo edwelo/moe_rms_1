@@ -10,6 +10,7 @@
 		var test = false; //global boolean for various tests
 		var rqId = 0; //0 for list view. number or 'new' for form view.
 		var rcvId = 0; //0 for rcv list view. number or 'new' for form view.
+		var rqItemSel; //for rq items selector in receiving detail form
 		//loads the http queries
 		var qGET = new URLSearchParams(location.search);
 		var page_name = "";

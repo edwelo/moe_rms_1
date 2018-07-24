@@ -175,16 +175,15 @@
 				-->
 
 				<tr>
+					<!-- This td has to be on one line. The function deleteRcvItem 
+					     parses it to find the receivingItemId. -->
+					<td><input type="hidden" name="receivingItemId" value="" /><input type="hidden" name="receivingId" value="" /><data value="receivingItemId"></data></td>
 					<td>
-						<input type="hidden" name="receivingItemId" value="" />
-						<input type="hidden" name="receivingId" value="" />
-						<data value="receivingItemId"></data>
-					</td>
-					<td>
-						<input type="hidden" name="requisitionItemId" value="" />
+						<input type="hidden" name="requisitionItemId" value="" style="width: 35repx;" />
 						<data value="requisitionItemId"></data>
 						<data value="org"></data>
 						<data value="acc"></data>
+						<select style="display: none; width: 130;" id="rqItemsSelector" onchange="setRcvItemRqItemId(this);"></select>
 					</td>
 					<td style="text-align: right;">
 						<input type="text" name="quantity" value="" style="width: 8em; text-align: right;" onchange="extPriceCalc(this);" />
@@ -206,7 +205,7 @@
 					</td>
 				</tr>
 			</table>
-			<button style="margin-bottom: 2px; padding: 0 4px 2px 4px; height: auto; border-radius: 2px;" type="button" onclick="copyRow('rcvTable');">
+			<button style="margin-bottom: 2px; padding: 0 4px 2px 4px; height: auto; border-radius: 2px;" type="button" onclick="addNewItemToItemTable();">
 				&nbsp; + &nbsp;
 			</button>
 		</div>

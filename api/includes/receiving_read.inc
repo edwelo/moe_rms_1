@@ -4,7 +4,9 @@
 
 if($rqId && is_numeric($rqId)) {
 
-	//one rq
+	//#########
+	//## one rq
+	//#########
 
 	$sql = "
 		SELECT
@@ -20,17 +22,45 @@ if($rqId && is_numeric($rqId)) {
 
 	$rs = $db->query($sql) or die("GET_RQ: " . $db->error . $sqlHTML);
 	$data["rq"] = $rs->fetch_assoc();
+	$data["rq"]["items"] = array();
 	$data["rq"]["rcvlist"] = array();
 
-	//receivings and items for the one rq
+	//#########
+	//## one rq's items to be used in receiving items selector
+	//#########
 
+	$sql = "SELECT 
+				*
+			FROM 
+				${rqItemsTable} 
+			WHERE 
+				requisitionId = ${rqId} AND 
+				isValid NOT LIKE 'x%'
+			";
+
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+
+	$rs = $db->query($sql) or die("GET_RQ_ITEMS: " . $db->error);
+	if(mysqli_num_rows($rs)) {
+		while($tmp = $rs->fetch_assoc()) { 
+			$data["rq"]["items"][$tmp["requisitionItemId"]] = $tmp;
+		}
+	}
+
+	//Reset the indexes so it is non-associative for later use by javascript
+	$data["rq"]["items"] = array_values($data["rq"]["items"]);
+
+	//#########
+	//## receivings for the one rq
+	//#########
+	
 	$sql = "SELECT * 
 			FROM ${rcvTable} 
 			WHERE 
 				requisitionId = ${rqId} AND 
 				isValid NOT LIKE 'x%'";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
 	$rs = $db->query($sql) or die("GET_RCV: " . $db->error);
 	if(mysqli_num_rows($rs)) {
@@ -41,6 +71,10 @@ if($rqId && is_numeric($rqId)) {
 		}
 	}
 
+	//#########
+	//## items for each of the receivings above
+	//#########
+	
 	$sql = "SELECT 
 				b.*
 			FROM 
