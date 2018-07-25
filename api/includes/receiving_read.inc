@@ -109,6 +109,49 @@ if($rqId && is_numeric($rqId)) {
 
 	$sql = "
 	SELECT
+		requisitionId, numItems, poNo, poType, poAmount, poDate,
+		vendorName, justification,
+		0 AS rcvActivityCount,
+		0 AS rcvActivityAmount,
+		0 AS distribActivityCount,
+		0 AS distribActivityAmount,
+		status, statusDate
+	FROM
+		${rqTable}
+	WHERE
+		isValid NOT LIKE 'void%' AND poNo IS NOT NULL AND poNO != ''
+	";
+
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+
+	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
+	while($tmp = $rs->fetch_assoc()) {
+		$result1[$tmp["requisitionId"]] = $tmp;
+	}
+
+	$sql = "
+	SELECT
+		requisitionId,
+		COUNT(*) AS rcvActivityCount,
+		SUM(invoiceAmount) AS rcvActivityAmount
+	FROM
+		${rcvTable}
+	WHERE
+		isValid NOT LIKE 'x%'
+	GROUP BY
+		requisitionId
+	";
+	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
+	while($tmp = $rs->fetch_assoc()) {
+		$result1[$tmp["requisitionId"]]["rcvActivityCount"] = $tmp["rcvActivityCount"];
+		$result1[$tmp["requisitionId"]]["rcvActivityAmount"] = $tmp["rcvActivityAmount"];
+	}
+
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+
+	/*
+	$sql = "
+	SELECT
 		a.requisitionId, a.numItems, a.poNo, a.poType, a.poAmount, a.poDate,
 		a.vendorName, a.justification,
 		COUNT(b.receivingId) AS rcvActivityCount,
@@ -124,12 +167,13 @@ if($rqId && is_numeric($rqId)) {
 		a.requisitionId
 	";
 
-	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
 	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
 	while($tmp = $rs->fetch_assoc()) {
 		$result1[$tmp["requisitionId"]] = $tmp;
 	}
+	*/
 
 	//distribution activity count
 	$sql = "
