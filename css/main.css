@@ -51,7 +51,8 @@ body {
 }
 
 .header-left {
-	font-size: 1.5em;
+	font-size: 1.7em;
+    font-weight: bolder; 
 }
 
 .header-right a:hover {
@@ -68,6 +69,10 @@ body {
 	background-color: #305A72;
 	color: #ddd;
 	cursor: pointer;
+}
+
+#login span {
+    font-size: 12px;
 }
 
 /*Div Level 2 */
@@ -100,7 +105,8 @@ table {
 td, th {
     border: 1px solid #4f7a93;
     padding: 5px;
-    text-align: center;
+    text-align: left;
+    vertical-align: middle;
 }
 
 tr:nth-child(even) {

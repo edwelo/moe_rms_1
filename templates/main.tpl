@@ -28,17 +28,13 @@
 	<div class="header">
 	  <div class="header-left"><a href="#"> MOE Forms </a></div>
 	  <div class="header-right">
-	  	<div style="float: left;">
-			{page_name_selector}
-		</div>
-		<div style="float: left; margin-left: 1em; text-align: center; font-size: small; color: white;">
-			<form style="margin: none; display: inline;" name="login" action="" method=post>
-				<span style="cursor: pointer;" onclick="document.login.submit()">{log_action}</span><br />
-				<span id="user" style="display: inline-block; padding-top: 6px; font-size: x-small;">{cn}</span>
-				<span id="userId" style="display: none;">{uidnumber}</span>
-				<input type=hidden name=log_action value="{log_action}" />
-			</form>
-		</div>
+		{page_name_selector}
+		<form id = "login" name="login" action="" method=post><a>
+			<span onclick="document.login.submit()">{log_action}</span>
+			<span id="user">{cn}</span>
+			<span id="userId" style="display: none;">{uidnumber}</span>
+			<input type=hidden name=log_action value="{log_action}" />
+		</a></form>
 	  </div>
 	</div>
 
