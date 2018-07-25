@@ -60,10 +60,10 @@ $distribTable = "finance4.distributions";
 $distribItemsTable = "finance4.distributions_items";
 
 if(isset($_GET["save"])) {
-	require_once("includes/${page_name}_save.inc");
+	require_once("includes/" . strtolower($page_name) . "_save.inc");
 }
 
-require_once("includes/${page_name}_read.inc");
+require_once("includes/" . strtolower($page_name) . "_read.inc");
 
 if($_GET["a"]) {
 	echo "<p>Read SQLs:</p>" . $sqlHTML;

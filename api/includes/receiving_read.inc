@@ -12,7 +12,7 @@ if($rqId && is_numeric($rqId)) {
 		SELECT
 			*
 		FROM
-			${rqTable} 
+			${rqTable}
 		WHERE
 			isValid NOT LIKE 'void%' AND
 			requisitionId=${rqId}
@@ -29,12 +29,12 @@ if($rqId && is_numeric($rqId)) {
 	//## one rq's items to be used in receiving items selector
 	//#########
 
-	$sql = "SELECT 
+	$sql = "SELECT
 				*
-			FROM 
-				${rqItemsTable} 
-			WHERE 
-				requisitionId = ${rqId} AND 
+			FROM
+				${rqItemsTable}
+			WHERE
+				requisitionId = ${rqId} AND
 				isValid NOT LIKE 'x%'
 			";
 
@@ -42,7 +42,7 @@ if($rqId && is_numeric($rqId)) {
 
 	$rs = $db->query($sql) or die("GET_RQ_ITEMS: " . $db->error);
 	if(mysqli_num_rows($rs)) {
-		while($tmp = $rs->fetch_assoc()) { 
+		while($tmp = $rs->fetch_assoc()) {
 			$data["rq"]["items"][$tmp["requisitionItemId"]] = $tmp;
 		}
 	}
@@ -53,18 +53,18 @@ if($rqId && is_numeric($rqId)) {
 	//#########
 	//## receivings for the one rq
 	//#########
-	
-	$sql = "SELECT * 
-			FROM ${rcvTable} 
-			WHERE 
-				requisitionId = ${rqId} AND 
+
+	$sql = "SELECT *
+			FROM ${rcvTable}
+			WHERE
+				requisitionId = ${rqId} AND
 				isValid NOT LIKE 'x%'";
 
 	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
 	$rs = $db->query($sql) or die("GET_RCV: " . $db->error);
 	if(mysqli_num_rows($rs)) {
-		while($tmp = $rs->fetch_assoc()) { 
+		while($tmp = $rs->fetch_assoc()) {
 			unset($tmp["isValid"]);
 			$tmp["items"] = array();
 			$data["rq"]["rcvlist"][$tmp["receivingId"]] = $tmp;
@@ -74,15 +74,15 @@ if($rqId && is_numeric($rqId)) {
 	//#########
 	//## items for each of the receivings above
 	//#########
-	
-	$sql = "SELECT 
+
+	$sql = "SELECT
 				b.*
-			FROM 
-				${rcvTable} a, ${rcvItemsTable} b 
-			WHERE 
-				a.receivingId=b.receivingId AND 
-				a.requisitionId = ${rqId} AND 
-				a.isValid NOT LIKE 'x%' AND 
+			FROM
+				${rcvTable} a, ${rcvItemsTable} b
+			WHERE
+				a.receivingId=b.receivingId AND
+				a.requisitionId = ${rqId} AND
+				a.isValid NOT LIKE 'x%' AND
 				b.isValid NOT LIKE 'x%'
 			";
 
@@ -90,7 +90,7 @@ if($rqId && is_numeric($rqId)) {
 
 	$rs = $db->query($sql) or die("GET_RCV_ITEMS: " . $db->error);
 	if(mysqli_num_rows($rs)) {
-		while($tmp = $rs->fetch_assoc()) { 
+		while($tmp = $rs->fetch_assoc()) {
 			unset($tmp["isValid"]);
 			$data["rq"]["rcvlist"][$tmp["receivingId"]]["items"][] = $tmp;
 		}
@@ -99,17 +99,21 @@ if($rqId && is_numeric($rqId)) {
 	//Reset the indexes so it is non-associative for later use by javascript
 	$data["rq"]["rcvlist"] = array_values($data["rq"]["rcvlist"]);
 
+	if($newSaved) {
+		$data["rq"]["newSaved"] = $newSaved;
+	}
+
 } else {
 
 	//list of pos
-	
+
 	$sql = "
 	SELECT
-		a.requisitionId, a.numItems, a.poNo, a.poType, a.poAmount, a.poDate, 
+		a.requisitionId, a.numItems, a.poNo, a.poType, a.poAmount, a.poDate,
 		a.vendorName, a.justification,
-		COUNT(b.receivingId) AS rcvActivityCount, 
+		COUNT(b.receivingId) AS rcvActivityCount,
 		SUM(b.invoiceAmount) AS rcvActivityAmount,
-		NULL AS distribActivityCount, 
+		NULL AS distribActivityCount,
 		NULL AS distribActivityAmount,
 		a.status, a.statusDate
 	FROM
@@ -126,7 +130,7 @@ if($rqId && is_numeric($rqId)) {
 	while($tmp = $rs->fetch_assoc()) {
 		$result1[$tmp["requisitionId"]] = $tmp;
 	}
-	
+
 	//distribution activity count
 	$sql = "
 	SELECT t1.requisitionId, COUNT(t1.dCount) AS dCount FROM
@@ -135,7 +139,7 @@ if($rqId && is_numeric($rqId)) {
 		FROM
 			${rcvItemsTable} a, ${distribItemsTable} b
 		WHERE
-			a.receivingItemId = b.receivingItemId AND 
+			a.receivingItemId = b.receivingItemId AND
 			a.isValid NOT LIKE 'x%' AND b.isValid NOT LIKE 'x%'
 		GROUP BY a.requisitionId, b.distributionId) t1
 	GROUP BY t1.requisitionId
@@ -147,7 +151,7 @@ if($rqId && is_numeric($rqId)) {
 	while($tmp = $rs->fetch_assoc()) {
 		$result1[$tmp["requisitionId"]]["distribActivityCount"] = $tmp["dCount"];
 	}
-	
+
 	//distribution activity amount
 	$sql = "
 	SELECT
@@ -155,7 +159,7 @@ if($rqId && is_numeric($rqId)) {
 	FROM
 		${rcvItemsTable} a, ${distribItemsTable} b
 	WHERE
-		a.receivingItemId = b.receivingItemId AND 
+		a.receivingItemId = b.receivingItemId AND
 		a.isValid NOT LIKE 'x%' AND b.isValid NOT LIKE 'x%'
 	GROUP BY
 		a.requisitionId
@@ -167,9 +171,9 @@ if($rqId && is_numeric($rqId)) {
 	while($tmp = $rs->fetch_assoc()) {
 		$result1[$tmp["requisitionId"]]["distribActivityAmount"] = $tmp["amount"];
 	}
-	
+
 	foreach($result1 as $row) { $data["rqlist"][] = $row; }
-	
+
 }
 
 
