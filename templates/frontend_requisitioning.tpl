@@ -23,7 +23,7 @@
 				<th>Justification</th>
 				<th>PO No/Date</th>
 			</tr>
-			<tr style="vertical-align: top; cursor: pointer;">
+			<tr>
 				<td>
 					<span></span>
 				</td>
@@ -69,19 +69,19 @@
 				Office: 		<input type="text" name="initiatingOffice" value="" />
 				RqBy: 			<input type="text" name="requestedBy" value="" />
 				PrepBy: 		<input disabled type="text" name="preparedByName" value="" /><input type=hidden name="preparedById" value="" />
-				PrepDate: 		<input size = "10%" type="text" name="preparedDate" value=""/><br />
-				RqAmount: 	   $<input size = "10%" type=text name="rqAmount" value=""/>
-				RqApprvDate: 	<input size = "10%" type="text" name="approvedDate" value=""/>
-				Vendor: 		<input size = "10%" type="text" name="vendorId" value=""/>
-								<input disabled name="vendorName" value="" /> <br>
-				Justification:	<input type="text" name="justification" value="" size = 100%/><br />
-				PO: 			<input size = "10%" type="text" name="poNo" value=""/>
-				PO Type: 		<input size = "10%" type="text" name="poType" value=""/>
-				PO Date:		<input size = "10%" type="text" name="poDate" value="" />
-				PO Amount: 	   $<input size = "10%" type="text" name="poAmount" value=""  />
+				PrepDate: 		<input type="text" name="preparedDate" value=""/>
+				RqAmount: 	   $<input type=text name="rqAmount" value=""/>
+				RqApprvDate: 	<input type="text" name="approvedDate" value=""/>
+				Vendor: 		<input type="text" name="vendorId" value=""/>
+								<input disabled name="vendorName" value="" />
+				Justification:	<input type="text" name="justification" value="" size = 100%/>
+				PO: 			<input type="text" name="poNo" value=""/>
+				PO Type: 		<input type="text" name="poType" value=""/>
+				PO Date:		<input type="text" name="poDate" value="" />
+				PO Amount: 	   $<input type="text" name="poAmount" value=""  />
 			</div>
 
-			<table id = "items_table" class="tbl">
+			<table id = "items_table" class="level2table">
 				<tr>
 					<th> Id </th>
 					<th> Org </th>
@@ -97,17 +97,17 @@
 					<th style="width: 20px;"> del </th>
 				</tr>
 				<tr>
-					<td style="width: 50px;"> <input disabled type="text" name="requisitionItemId" value="" style="text-align: right;" /> </td>
-					<td style="width: 60px;"> <input type="text" name="org" value="" /> </td>
-					<td style="width: 80px;"> <input type="text" name="costCenter" value="" /> </td>
-					<td style="width: 60px;"> <input type="text" name="task" value="" /> </td>
-					<td style="width: 60px;"> <input type="text" name="opt" value="" /> </td>
-					<td style="width: 60px;"> <input type="text" name="acc" value="" /> </td>
-					<td style="width: 60px;"> <input type="text" name="quantity" value="" style="text-align: right;" /> </td>
-					<td style="width: 40px;"> <input type="text" name="unit" value="" /> </td>
-					<td style="width: 80px;"> <input type="text" name="price" value="" style="text-align: right;" /> </td>
-					<td style="width: 80px;"> <input disabled type="text" name="extended" value="" style="text-align: right;" /> </td>
-					<td> <input type="text" name="description" value="" /> </td>
+					<td> <input class = "small" disabled type="text" name="requisitionItemId" value="" /> </td>
+					<td> <input class = "small" type="text" name="org" value="" /> </td>
+					<td> <input class = "small" type="text" name="costCenter" value="" /> </td>
+					<td> <input class = "small" type="text" name="task" value="" /> </td>
+					<td> <input class = "small" type="text" name="opt" value="" /> </td>
+					<td> <input class = "small" type="text" name="acc" value="" /> </td>
+					<td> <input class = "small" type="text" name="quantity" value="" /> </td>
+					<td> <input class = "small" type="text" name="unit" value="" /> </td>
+					<td> <input class = "medium" type="text" name="price" value="" /> </td>
+					<td> <input class = "medium" disabled type="text" name="extended" value="" /> </td>
+					<td> <input class = "big"type="text" name="description" value="" /> </td>
 					<td> <input type="checkbox" name="del" value=0 /> </td>
 				</tr>
 			</table>

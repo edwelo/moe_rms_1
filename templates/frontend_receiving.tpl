@@ -84,10 +84,10 @@
 
 		<div id="rcvList">
 
-			<hr style="height: 3px; background-color: #17445E;" />
+			<hr/>
 
 			List of Receivings
-			<table id = "rcvListTable" class="tbl">
+			<table id = "rcvListTable" class="level2table">
 				<tr>
 					<th> Id </th>
 					<th> RcvBy </th>
@@ -95,7 +95,7 @@
 					<th> Purpose </th>
 					<th> InvNo </th>
 					<th> InvDate </th>
-					<th style="text-align: right;"> InvAmount </th>
+					<th> InvAmount </th>
 					<th> Status</th>
 					<th> StatusDate </th>
 				</tr>
@@ -108,7 +108,7 @@
 					<td> <data value="justification"></data></td>
 					<td> <data value="invoiceNo"></data></td>
 					<td> <data value="invoiceDate"></data></td>
-					<td style="text-align: right;"> <data value="invoiceAmount"></data></td>
+					<td> <data value="invoiceAmount"></data></td>
 					<td> <data value="status"></data></td>
 					<td> <data value="statusDate"></data></td>
 				</tr>
@@ -117,53 +117,53 @@
 
 		<div id="rcv">
 
-			<hr style="height: 3px; background-color: #216288;" />
+			<hr/>
 
 			<div id="rcvData">
-				<button style="margin-bottom: 2px; padding: 0 4px 2px 4px; height: auto; border-radius: 2px;" type="button" onclick="setRcvId(0);">&nbsp; < &nbsp;</button>&nbsp;
-				<span style="color: #305A72; font-weight: bold;">Receiving Id Number: #<data value="receivingId"></data></span><br />
+				<button type="button" onclick="setRcvId(0);">&nbsp; < &nbsp;</button>&nbsp;
+				<span>Receiving Id Number: #<data value="receivingId"></data></span><br />
 
 				<input type="hidden" name="requisitionId" value="" />
 
-				<div style="float: left;">Office:<br /><input type=text name="initiatingOffice" value="" size=25 /></div>
-				<div style="float: left;">RqBy:<br /><input type=text name="requestedBy" value="" size=25 /></div>
-				<div style="float: left;">RqDate:<br /><input type="text" name="requestedDate" value="" size=12 /></div>
-				<div style="float: left;">PrepBy:<br /><input type=text name="preparedBy" value="" size=25 /></div>
-				<div style="float: left;">PrepDate:<br /><input type="text" name="preparedDate" value="" size=12 /></div>
+				<div>Office:<br /><input type=text name="initiatingOffice" value="" size=25 /></div>
+				<div>RqBy:<br /><input type=text name="requestedBy" value="" size=25 /></div>
+				<div>RqDate:<br /><input type="text" name="requestedDate" value="" size=12 /></div>
+				<div>PrepBy:<br /><input type=text name="preparedBy" value="" size=25 /></div>
+				<div>PrepDate:<br /><input type="text" name="preparedDate" value="" size=12 /></div>
 
 				<div style="clear: both;"></div>
 
-				<div style="float: left;">AuthNo:<br /><input type=text name="authNo" value="" size=25 /></div>
-				<div style="float: left;">AuthDate:<br /><input type="text" name="authDate" value="" size=12 /></div>
-				<div style="float: left;">AuthAmount:<br /><input style="text-align: right;" type="text" name="authAmount" value="" size=12 /></div>
-				<div style="float: left;">Purpose:<br /><input type=text name="justification" value="" size=80 /></div>
+				<div>AuthNo:<br /><input type=text name="authNo" value="" size=25 /></div>
+				<div>AuthDate:<br /><input type="text" name="authDate" value="" size=12 /></div>
+				<div>AuthAmount:<br /><input type="text" name="authAmount" value="" size=12 /></div>
+				<div>Purpose:<br /><input type=text name="justification" value="" size=80 /></div>
 
 				<div style="clear: both;"></div>
 
-				<div style="float: left;">RcvBy:<br /><input type=text name="rcvBy" value="" size=25 /></div>
-				<div style="float: left;">RcvDate:<br /><input type="text" name="rcvDate" value="" size=12 /></div>
-				<div style="float: left;">InvNo:<br /><input type="text" name="invoiceNo" value="" size=12 /></div>
-				<div style="float: left;">InvDate:<br /><input type="text" name="invoiceDate" value="" size=12 /></div>
-				<div style="float: left;">InvAmt:<br /><input style="text-align: right;" type="text" name="invoiceAmount" value="" size=12 /></div>
-				<div style="float: left;">Date:<br /><input type="text" name="statusDate" value="" size=20 /></div>
+				<div>RcvBy:<br /><input type=text name="rcvBy" value="" size=25 /></div>
+				<div>RcvDate:<br /><input type="text" name="rcvDate" value="" size=12 /></div>
+				<div>InvNo:<br /><input type="text" name="invoiceNo" value="" size=12 /></div>
+				<div>InvDate:<br /><input type="text" name="invoiceDate" value="" size=12 /></div>
+				<div>InvAmt:<br /><input type="text" name="invoiceAmount" value="" size=12 /></div>
+				<div>Date:<br /><input type="text" name="statusDate" value="" size=20 /></div>
 
 				<div style="clear: both;"></div>
 
-				<div style="float: left;">Remarks:<br /><input type="text" name="remarks" value="" size=120 /></div>
+				<div>Remarks:<br /><input type="text" name="remarks" value="" size=120 /></div>
 
 				<div style="clear: both;"></div>
 			</div>
 
 			<table id = "rcvTable" class="tbl">
 				<tr>
-					<th style="width: 30px;"> Id </th>
-					<th style="width: 30px;"> RqItemInfo </th>
-					<th style="width: 30px; text-align: right;"> Qty </th>
-					<th style="width: 30px;"> Unit </th>
-					<th style="width: 30px; text-align: right;"> Price </th>
-					<th style="width: 30px;" style="width: 30px; text-align: right;"> Extended</th>
-					<th style="width: 30px;"> Description </th>
-					<th style="width: 30px; text-align: center;">Del</th>
+					<th> Id </th>
+					<th> RqItemInfo </th>
+					<th> Qty </th>
+					<th> Unit </th>
+					<th> Price </th>
+					<th> Extended</th>
+					<th> Description </th>
+					<th>Del</th>
 				</tr>
 
 				<!--
@@ -185,17 +185,17 @@
 						<data value="acc"></data>
 						<select style="display: none; width: 130;" id="rqItemsSelector" onchange="setRcvItemRqItemId(this);"></select>
 					</td>
-					<td style="text-align: right;">
-						<input type="text" name="quantity" value="" style="width: 8em; text-align: right;" onchange="extPriceCalc(this);" />
+					<td>
+						<input type="text" name="quantity" value="" onchange="extPriceCalc(this);" />
 					</td>
 					<td>
-						<input type="text" name="unit" value="" style="width: 6em;"  />
+						<input type="text" name="unit" value=""  />
 					</td>
-					<td style="text-align: right;">
-						<input type="text" name="price" value="" style="width: 8em; text-align: right;" onchange="extPriceCalc(this);" />
+					<td>
+						<input type="text" name="price" value="" onchange="extPriceCalc(this);" />
 					</td>
-					<td style="text-align: right;">
-						<input type="text" name="extended" value="" readonly style="width: 8em; text-align: right;" />
+					<td>
+						<input type="text" name="extended" value="" readonly />
 					</td>
 					<td>
 						<input type="text" name="description" value="" />
@@ -205,7 +205,7 @@
 					</td>
 				</tr>
 			</table>
-			<button style="margin-bottom: 2px; padding: 0 4px 2px 4px; height: auto; border-radius: 2px;" type="button" onclick="addNewItemToItemTable();">
+			<button type="button" onclick="addNewItemToItemTable();">
 				&nbsp; + &nbsp;
 			</button>
 		</div>
