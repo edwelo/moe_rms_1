@@ -1,5 +1,22 @@
 # TCinGC MOE 2018
 
+## 2018-07-25
+
+The data entry functions of Requisitioning and Receiving are working well enough for staff to begin entering data. This was tested at a training/testing session held today with Den, Bonnie, TE, Ole, Adeline, Laurie, Mary, Orchid, Emrei.
+
+Software issues raised:
+
+* Authentication issues. Only laurie was able to log on. Edwel will investigate and fix. Authentication is against LDAP, but those with problems did not seem to be triggering an LDAP response.
+* Vendor field needs to be populated with a selector tool.
+* Possibly make selector tool for org, acc, etc.
+* Some staff went ahead and commented on other unfinished features. We explained that those were still under construction. But the entry functions do work and data entry can begin.
+* These should be fixed by Friday so staff can begin entering FY2018 data on Monday.
+
+Ongoing development
+
+* Ameeshi will create a new branch (called css) and work on styling and presentation
+* Edwel will create a new branch (called New_Branch) and work on populating, editing, and saving the two tables in the distribution form.
+
 ## 2018-07-07
 
 The app structure is complete and uploaded to Ameeshi's github today.
