@@ -14,7 +14,8 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 		//$json = '{"requisitionId":"new","initiatingOffice":"180718 1006","requestedBy":"edwel","preparedById":"","preparedDate":"2018-07-18","vendorId":"13","justification":"dfjo osdfj oidfj osijfjidsoji","rqAmount":"","moeApprovedDate":"","poNo":"","poDate":"","poAmount":"","items":[{"requisitionItemId":"","org":"1322","costCenter":"boe","task":"","opt":"","acc":"1420","quantity":"50","unit":"cs","price":"57","extended":"","description":"Copier Paper","del":""}]}';
 		//$json = '{"requisitionId":"1","initiatingOffice":"BEA Transportation Services","requestedBy":"Godinez","requestedDate":"2017-12-23","preparedBy":"","preparedDate":"2017-12-23","authNo":"Temp001.03","authDate":"2018-01-28","authAmount":"372.600","justification":"Repair Bus #3","rcvBy":"Godinez","rcvDate":"2018-02-28","invoiceNo":"KM009","invoiceDate":"2018-02-28","invoiceAmount":"372.600","statusDate":"","remarks":"","items":[{"receivingItemId":"17","receivingId":"9","requisitionItemId":"1","quantity":"8.000","unit":"pts","price":"7.950","extended":"63.600","description":"Motor Oil 10-30","del":"undefined"},{"receivingItemId":"18","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"ea","price":"48.000","extended":"144.000","description":"Belts (Fan, Alternator, Main)","del":"undefined"},{"receivingItemId":"19","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"hrs","price":"55.000","extended":"165.000","description":"Service Labor","del":"undefined"}]}';
 		//$json = '{"requisitionId":"1","initiatingOffice":"BEA Transportation Services","requestedBy":"Godinez","requestedDate":"2017-12-23","preparedBy":"","preparedDate":"2017-12-23","authNo":"Temp001.03","authDate":"2018-01-28","authAmount":"372.600","justification":"Repair Bus #3","rcvBy":"Godinez","rcvDate":"2018-02-28","invoiceNo":"KM009","invoiceDate":"2018-02-28","invoiceAmount":"372.600","statusDate":"","remarks":"","items":[{"receivingItemId":"17","receivingId":"9","requisitionItemId":"1","quantity":"8.000","unit":"pts","price":"7.950","extended":"63.600","description":"Motor Oil 10-30","del":"undefined"},{"receivingItemId":"18","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"ea","price":"48.000","extended":"144.000","description":"Belts (Fan, Alternator, Main)","del":"undefined"},{"receivingItemId":"19","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"hrs","price":"55.000","extended":"165.000","description":"Service Labor","del":"undefined"},{"receivingItemId":"","receivingId":"","requisitionItemId":"","quantity":"3","unit":"ea","price":"1500","extended":"0","description":"kickback","del":""}]}';
-		$json = '{"requisitionId":"1","initiatingOffice":"BEA Transportation Services","requestedBy":"Godinez","requestedDate":"2017-12-23","preparedBy":"","preparedDate":"2017-12-23","authNo":"Temp001.03","authDate":"2018-01-28","authAmount":"372.600","justification":"Repair Bus #3","rcvBy":"Godinez","rcvDate":"2018-02-28","invoiceNo":"KM009","invoiceDate":"2018-02-28","invoiceAmount":"372.600","statusDate":"","remarks":"","items":[{"receivingItemId":"17","receivingId":"9","requisitionItemId":"1","quantity":"8.000","unit":"pts","price":"7.950","extended":"63.600","description":"Motor Oil 10-30","del":"undefined"},{"receivingItemId":"18","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"ea","price":"48.000","extended":"144.000","description":"Belts (Fan, Alternator, Main)","del":"undefined"},{"receivingItemId":"19","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"hrs","price":"55.000","extended":"165.000","description":"Service Labor","del":"1"},{"receivingItemId":"","receivingId":"9","requisitionItemId":"1","quantity":"5","unit":"e","price":"25","extended":"25000","description":"kickbak","del":""}]}';
+		//$json = '{"requisitionId":"1","initiatingOffice":"BEA Transportation Services","requestedBy":"Godinez","requestedDate":"2017-12-23","preparedBy":"","preparedDate":"2017-12-23","authNo":"Temp001.03","authDate":"2018-01-28","authAmount":"372.600","justification":"Repair Bus #3","rcvBy":"Godinez","rcvDate":"2018-02-28","invoiceNo":"KM009","invoiceDate":"2018-02-28","invoiceAmount":"372.600","statusDate":"","remarks":"","items":[{"receivingItemId":"17","receivingId":"9","requisitionItemId":"1","quantity":"8.000","unit":"pts","price":"7.950","extended":"63.600","description":"Motor Oil 10-30","del":"undefined"},{"receivingItemId":"18","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"ea","price":"48.000","extended":"144.000","description":"Belts (Fan, Alternator, Main)","del":"undefined"},{"receivingItemId":"19","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"hrs","price":"55.000","extended":"165.000","description":"Service Labor","del":"1"},{"receivingItemId":"","receivingId":"9","requisitionItemId":"1","quantity":"5","unit":"e","price":"25","extended":"25000","description":"kickbak","del":""}]}';
+		$json = '{"requisitionId":"1","initiatingOffice":"BEA Transportation Services","requestedBy":"Godinez","requestedDate":"2017-12-23","preparedBy":"","preparedDate":"2017-12-23","authNo":"Temp001.03","authDate":"2018-01-28","authAmount":"372.600","justification":"Repair Bus #3","rcvBy":"Godinez","rcvDate":"2018-02-28","invoiceNo":"KM009","invoiceDate":"2018-02-28","invoiceAmount":"372.600","statusDate":"","remarks":"","items":[{"receivingItemId":"17","receivingId":"9","requisitionItemId":"1","quantity":"8.000","unit":"pts","price":"7.950","extended":"63.600","description":"Motor Oil 10-30","del":"undefined"},{"receivingItemId":"18","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"ea","price":"48.000","extended":"144.000","description":"Belts (Fan, Alternator, Main)","del":"undefined"},{"receivingItemId":"19","receivingId":"9","requisitionItemId":"1","quantity":"3.000","unit":"hrs","price":"55.000","extended":"165.000","description":"Service Labor","del":"1"},{"receivingItemId":"","receivingId":"9","requisitionItemId":"1","quantity":"5","unit":"ea","price":"300","extended":"1250","description":"Kickback for me","del":""}]}';
 		$rcvArr = json_decode($json);
 		$json = "JSON - GET: " . $json;
 	} else {
@@ -41,11 +42,11 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 	$rqId = $rcvArr->requisitionId;
 
 	$items = $rcvArr->items;
-	
+
 	//remove the following fields from \$rcvArr
 	$tmp = array("items", "receivingId");
 	foreach($tmp as $key) { unset($rqArr->$key); }
-	
+
 	//tables
 
 	//base sqls
@@ -60,7 +61,7 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 	#####
 	# Set up the rcving sql
 	#####
-	
+
 	$fields[] = array("receivingId", "int", 4, "NOT NULL", "AUTO_INCREMENT");
 	$fields[] = array("requisitionId", "int", 4, "DEFAULT NULL", "");
 	$fields[] = array("initiatingOffice", "varchar", 30, "DEFAULT NULL", "");
@@ -83,11 +84,11 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 	$fields[] = array("statusDate", "date", "", "DEFAULT NULL", "");
 	$fields[] = array("remarks", "varchar", 255, "DEFAULT ''", "");
 	$fields[] = array("isValid", "varchar", 20, "NOT NULL", "");
-	
+
 	$l = count($fields) - 1;
-	
+
 	$sqlData = "";
-	
+
 	for($i=1; $i<$l; $i++) {
 		$fieldName=$fields[$i][0]; $fieldType=$fields[$i][1]; $fieldLength = $fields[$i][2];
 		if($rcvArr->$fieldName) {
@@ -113,7 +114,7 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 		}
 	}
 	$sqlData = trim($sqlData, ",");
-	
+
 	if(is_numeric($rcvId)) {
 		$sql = sprintf($rcvUpdateSQL, $sqlData, $rcvId);
 	} else {
@@ -121,13 +122,16 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 	}
 
 	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . ";</p>";
-	
+
+	$db->query($sql) or die("RQ_Save_Error: " . $db->error . "<br />\n<code>${sql}</code>\n");
+	if(!$rcvId || $rcvId == "new") $rcvId = $db->insert_id;
+
 	#####
 	# Set up the rcving items sql
 	#####
-	
+
 	unset($fields);
-	
+
 	$fields[] = array("receivingItemId", "int", "5");
 	$fields[] = array("receivingId", "int", "4");
 	$fields[] = array("requisitionId", "int", "5");
@@ -143,11 +147,14 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 	$fields[] = array("isValid", "varchar", "30");
 
 	$l = count($fields) - 1;
-		
+
 	foreach($items as $item) {
 		$sqlData = ""; unset($sql);
 		for($i=1; $i<$l; $i++) {
 			$fieldName=$fields[$i][0]; $fieldType=$fields[$i][1]; $fieldLength = $fields[$i][2];
+			if($fieldName == "receivingId") {
+				$item->$fieldName = $rcvId;
+			}
 			if($item->$fieldName) {
 				$value = $item->$fieldName;
 				if($fieldType == "varchar") {
@@ -182,9 +189,9 @@ if($tmp && ($tmp == "new" || is_numeric($tmp))) {
 		}
 
 	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . ";</p>";
-	
+
 	}
-	
+
 	if($_GET["a"]) {
 		echo "<p>Save SQLs:</p>" . $sqlHTML;
 		unset($sqlHTML);
