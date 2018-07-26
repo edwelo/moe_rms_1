@@ -21,21 +21,21 @@ if($rqId && is_numeric($rqId)) {
 
 	$rs = $db->query($sql) or die("GET_RQ: " . $db->error . $sqlHTML);
 	
-	$data["rq"] = array();
+	$data["rq"]["distrib"] = array();
+	$data["rq"]["rcv"] = array();
 	
 	if(mysqli_num_rows($rs)) {
 		while($tmp = $rs->fetch_assoc()) { 
 			$distId = $tmp["distributionId"];
 			$array1 = array_slice($tmp, 0, 12);
 			$array2 = array_slice($tmp, 12, 9);
-			if(!isset($data["rq"]["distributionId"])) {
+			if(!isset($data["rq"]["distrib"]["distributionId"])) {
 				$array1["numItems"] = 0;
 				$array1["items"] = array();
-				$array1["rcv"] = array();
-				$data["rq"] = $array1;
+				$data["rq"]["distrib"] = $array1;
 			}
-			$data["rq"]["numItems"]++;
-			$data["rq"]["items"][] = $array2; 
+			$data["rq"]["distrib"]["numItems"]++;
+			$data["rq"]["distrib"]["items"][] = $array2; 
 		}
 	}
 	
@@ -67,8 +67,7 @@ if($rqId && is_numeric($rqId)) {
 	}
 	
 	$data["rq"]["rcv"] = array_values($tmp2);
-	
-	
+
 } else {
 
 	//list of rqs
