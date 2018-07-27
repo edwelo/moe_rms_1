@@ -62,16 +62,16 @@ if($rqId && is_numeric($rqId)) {
 
 	$rs = $db->query($sql) or die("GET_RCVs: " . $db->error . $sqlHTML);
 
+	unset($tmp2);
 	if(mysqli_num_rows($rs)) {
 		while($tmp = $rs->fetch_assoc()) {
 			$poNo = $tmp["poNo"];
-			$array1 = array_slice($tmp, 0, 2);
-			$array2 = array_slice($tmp, 2, 7);
-			if(!isset($tmp[$poNo])) {
-				$array1["items"] = array();
-				$tmp[$poNo] = $array1;
+			$poDate = $tmp["poDate"];
+			unset($tmp["poDate"]);
+			if(!isset($tmp2[$poNo])) {
+				$tmp2[$poNo] = array("poNo"=>$poNo, "poDate"=>$poDate);
 			}
-			$tmp2[$poNo]["items"][] = $array2;
+			$tmp2[$poNo]["items"][] = $tmp;
 		}
 	}
 
