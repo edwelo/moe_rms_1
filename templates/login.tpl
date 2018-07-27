@@ -5,7 +5,7 @@
 
 	<h1>Login</h1>
 
-	<form style="text-align: center;" action="" method=post>
+	<form id = "login_page" style="text-align: center;" action="" method=post>
 		User Name:<br />
 		<input type=text name=username />
 		<br /><br />
