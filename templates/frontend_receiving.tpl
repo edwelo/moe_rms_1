@@ -62,9 +62,9 @@
 				New ... creates a new receiving by calling setRcvId('new')
 				Save ... saves the receiving by calling save()
 			-->
-			<button id="btnRcvAction">&nbsp;&nbsp;</button>
+			<button class = "level1button" id="btnRcvAction">&nbsp;&nbsp;</button>
 			</div>
-		<button onclick="setRQId(0)">Back to List</button>
+		<button class = "level1button" onclick="setRQId(0)">Back to List</button>
 		<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
 		<div style="clear: both;"></div>
 
@@ -120,7 +120,7 @@
 			<hr/>
 
 			<div id="rcvData">
-				<button type="button" onclick="setRcvId(0);">&nbsp; < &nbsp;</button>&nbsp;
+				<button class = "level2button" type="button" onclick="setRcvId(0);">&nbsp; < &nbsp;</button>&nbsp;
 				<span>Receiving Id Number: #<data value="receivingId"></data></span><br />
 
 				<input type="hidden" name="requisitionId" value="" />
@@ -205,7 +205,7 @@
 					</td>
 				</tr>
 			</table>
-			<button type="button" onclick="addNewItemToItemTable();">
+			<button class = "level2button" onclick="addNewItemToItemTable();">
 				&nbsp; + &nbsp;
 			</button>
 		</div>

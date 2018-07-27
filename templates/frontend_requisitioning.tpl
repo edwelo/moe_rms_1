@@ -55,10 +55,10 @@
 	<div id="rq" class="div_wrap" style="display: none;">
 
 		<div class="align-right">
-			<button onclick="print_rq();">Print</button>
-			<button onclick="main('button');">Save</button>
+			<button class = "level1button" onclick="print_rq();">Print</button>
+			<button class = "level1button" onclick="main('button');">Save</button>
 		</div>
-		<div class="align-left"><button onclick="setRQId(0)">Back to List</button></div>
+		<div class="align-left"><button class = "level1button" onclick="setRQId(0)">Back to List</button></div>
 		<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
 		<div style="clear: both;"></div>
 		
@@ -97,21 +97,21 @@
 					<th style="width: 20px;"> del </th>
 				</tr>
 				<tr>
-					<td> <input class = "small" disabled type="text" name="requisitionItemId" value="" /> </td>
-					<td> <input class = "small" type="text" name="org" value="" /> </td>
-					<td> <input class = "small" type="text" name="costCenter" value="" /> </td>
-					<td> <input class = "small" type="text" name="task" value="" /> </td>
-					<td> <input class = "small" type="text" name="opt" value="" /> </td>
-					<td> <input class = "small" type="text" name="acc" value="" /> </td>
-					<td> <input class = "small" type="text" name="quantity" value="" /> </td>
-					<td> <input class = "small" type="text" name="unit" value="" /> </td>
-					<td> <input class = "medium" type="text" name="price" value="" /> </td>
-					<td> <input class = "medium" disabled type="text" name="extended" value="" /> </td>
-					<td> <input class = "big"type="text" name="description" value="" /> </td>
-					<td> <input type="checkbox" name="del" value=0 /> </td>
+					<td style = "width: 15px;"> <input class = "small" disabled type="text" name="requisitionItemId" value=""> </td>
+					<td style = "width: 25px;"> <input class = "small" type="text" name="org" value=""> </td>
+					<td style = "width: 35px;"> <input class = "small" type="text" name="costCenter" value=""> </td>
+					<td style = "width: 35px;"> <input class = "small" type="text" name="task" value=""> </td>
+					<td style = "width: 35px;"> <input class = "small" type="text" name="opt" value=""> </td>
+					<td style = "width: 35px;"> <input class = "small" type="text" name="acc" value=""> </td>
+					<td style = "width: 35px;"> <input class = "small" type="text" name="quantity" value=""> </td>
+					<td style = "width: 35px;"> <input class = "small" type="text" name="unit" value=""> </td>
+					<td style = "width: 45px;"> <input class = "medium" type="text" name="price" value=""> </td>
+					<td style = "width: 45px;"> <input class = "medium" disabled type="text" name="extended" value=""> </td>
+					<td> <input class = "big" type="text" name="description" value=""> </td>
+					<td> <input type="checkbox" name="del" value=0> </td>
 				</tr>
 			</table>
-			<button type="button" onclick="copyRow('items_table');"> + </button>
-			<button type="button" onclick="deleteRow('items_table');"> - </button>
+			<button class = "level2button" onclick="copyRow('items_table');"> + </button>
+			<button class = "level2button" onclick="deleteRow('items_table');"> - </button>
 		</form>
 	</div>

@@ -151,7 +151,7 @@ th {
 
 /*Buttons*/
 
-button {
+.level1button {
     -moz-box-shadow: inset 0px 1px 0px 0px #3985B1;
     -webkit-box-shadow: inset 0px 1px 0px 0px #3985B1;
     box-shadow: inset 0px 1px 0px 0px #3985B1;
@@ -163,9 +163,12 @@ button {
     padding: 12px;
 }
 
-button:hover {
+.level1button:hover {
 	background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
     background-color: #17445E;
+}
+
+.level2button {
 }
 
 /*Forms and Inputs */
@@ -190,7 +193,7 @@ input {
 }
 
 .level2table .big {
-    width: 90%;
+    width: 95%;
 }
 
 input[type="checkbox"] {

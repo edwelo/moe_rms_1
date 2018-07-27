@@ -44,17 +44,17 @@
 		<div id="formViewHeader">
 
 			<div class="align-right">
-				<button onclick="print_rq();">Print</button>
-				<button onclick="main('button');">Save</button>
+				<button class = "level1button" onclick="print_rq();">Print</button>
+				<button class = "level1button" onclick="main('button');">Save</button>
 			</div>
-			<div class="align-left"><button onclick="setRQId(0)">Back to List</button></div>
+			<div class="align-left"><button class = "level1button" onclick="setRQId(0)">Back to List</button></div>
 			<center>Distribution ID <span id="rqId" style="font-weight: bold;"></span></center>
 			<div style="clear: both;"></div>
 
 		</div>
 
 		<!-- changed the id of this div  from "setheight" to "formViewLeftPanel" -->
-		<div id = "formViewLeftPanel" class = "align-left" style="width: 40%;"">
+		<div id = "formViewLeftPanel" class = "align-left" style="width: 35%;"">
 
 			<!-- changed the id of this table from "distTable" to "rcvTable" -->
 			<table id = "rcvTable">
@@ -77,7 +77,7 @@
 		</div>
 
 		<!-- changed the id of this div wrapper from "distform" to "formViewRightPanel" -->
-		<div id = "formViewRightPanel" class = "align-right" style="width: 55%;">
+		<div id = "formViewRightPanel" class = "align-right" style="width: 65%;">
 
 			<form id = "MyForm">
 
@@ -121,16 +121,16 @@
 						<td>
 							<data value="description"></data>
 						</td>
-						<td style = "padding: 2px;">
+						<td>
 							<input type="text" name="quantity" value="" size=4 />
 						</td>
-						<td style = "padding: 2px;">
+						<td>
 							<input type="text" name="assetTag" value="" size=8 />
 						</td>
-						<td style = "padding: 2px;">
+						<td>
 							<input type="text" name="modelNo" value="" size=15 />
 						</td>
-						<td style = "padding: 2px;">
+						<td>
 							<input type="text" name="serialNo" value="" size=15 />
 						</td>
 						<td>
