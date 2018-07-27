@@ -58,14 +58,10 @@
 	<div id="rq" class="div_wrap" style="display: none;">
 
 		<div class="align-right">
-			<!-- this button's action is set by js to either
-				New ... creates a new receiving by calling setRcvId('new')
-				Save ... saves the receiving by calling save()
-			-->
 			<button class = "level1button" id="btnRcvAction">&nbsp;&nbsp;</button>
-			</div>
+		</div>
 		<button class = "level1button" onclick="setRQId(0)">Back to List</button>
-		<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
+		<center> Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
 		<div style="clear: both;"></div>
 
 		<br />

@@ -2,7 +2,7 @@
 	<div id="rqList" class="div_wrap" style="display: none;">
 
 		<div class="align-right">
-			<button onclick="setRQId('new')">New RQ</button>
+			<button class = "level1button" onclick="setRQId('new')">New RQ</button>
 		</div>
 		List of Purchase Orders. 
 		<span style="color: grey;">Click on a row to edit.</span> <br><br>

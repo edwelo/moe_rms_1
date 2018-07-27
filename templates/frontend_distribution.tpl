@@ -14,7 +14,7 @@
 			<th>Destination /<br />Rcv By/Date</th>
 			<th>Remarks</th>
 		</tr>
-		<tr style="vertical-align: top; cursor: pointer;">
+		<tr>
 			<td>
 				<span></span>
 			</td>
@@ -71,7 +71,7 @@
 				  <td><data value="description"></data></td>
 				  <td><data value="quantity"></data></td>
 				  <td class="btn btn-info btn-lg" id = "plus">
-				  	<span onclick="addRowHandlers(this);" style="cursor: pointer;"> + </span></td>
+				  	<span onclick="addRowHandlers(this);"> + </span></td>
 				</tr>
 			</table>
 		</div>

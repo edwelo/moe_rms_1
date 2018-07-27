@@ -129,6 +129,10 @@ td, th {
     vertical-align: middle;
 }
 
+tr {
+    cursor: pointer;
+}
+
 .level2table td{
     padding: 0px;
 }
@@ -173,6 +177,16 @@ th {
 }
 
 .level2button {
+    box-shadow: inset 0px 1px 0px 0px #3985B1;
+    background-color: #2D77A2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px 7px;
+}
+
+.level2button:hover {
+    background-color: #5186a5;
 }
 
 /*Forms and Inputs */
