@@ -10,65 +10,73 @@ if($rqId && is_numeric($rqId)) {
 		SELECT
 			*
 		FROM
-			${distribTable} a LEFT JOIN 
+			${distribTable} a LEFT JOIN
 			${distribItemsTable} b ON a.distributionId=b.distributionId
 		WHERE
-			a.isValid NOT LIKE 'x%' AND 
+			a.isValid NOT LIKE 'x%' AND
 			b.isValid NOT LIKE 'x%' AND
 			a.distributionId=${rqId}";
 
 	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
 	$rs = $db->query($sql) or die("GET_RQ: " . $db->error . $sqlHTML);
-	
-	$data["rq"] = array();
-	
+
+	$data["rq"]["distrib"] = array();
+	$data["rq"]["rcv"] = array();
+
 	if(mysqli_num_rows($rs)) {
-		while($tmp = $rs->fetch_assoc()) { 
+		while($tmp = $rs->fetch_assoc()) {
 			$distId = $tmp["distributionId"];
 			$array1 = array_slice($tmp, 0, 12);
 			$array2 = array_slice($tmp, 12, 9);
-			if(!isset($data["rq"]["distributionId"])) {
+			if(!isset($data["rq"]["distrib"]["distributionId"])) {
 				$array1["numItems"] = 0;
 				$array1["items"] = array();
-				$array1["rcv"] = array();
-				$data["rq"] = $array1;
+				$data["rq"]["distrib"] = $array1;
 			}
-			$data["rq"]["numItems"]++;
-			$data["rq"]["items"][] = $array2; 
+			$data["rq"]["distrib"]["numItems"]++;
+			$data["rq"]["distrib"]["items"][] = $array2;
 		}
 	}
-	
-	$sql = "SELECT * 
-			FROM
-				${rcvTable} a LEFT JOIN
-				${rcvItemsTable} b ON a.receivingId=b.receivingId
-			WHERE 
-				a.isValid NOT LIKE 'x%' AND
-				b.isValid NOT LIKE 'x%'";
+
+	$sql = "
+		SELECT
+			a.poNo, a.poDate, a.requisitionId, d.requisitionItemId,
+			b.receivingId, c.receivingItemId, c.description, c.quantity
+		FROM
+			${rqTable} a,
+			${rcvTable} b,
+			${rcvItemsTable} c,
+			${rqItemsTable} d
+		WHERE
+			a.requisitionId=b.requisitionId AND
+			b.receivingId=c.receivingId AND
+			c.requisitionItemId=d.requisitionItemId AND
+			a.isValid NOT LIKE 'void%' AND
+			b.isValid NOT LIKE 'x%' AND
+			c.isValid NOT LIKE 'x%' AND
+			d.isValid NOT LIKE 'x%'
+	";
 
 	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
 
 	$rs = $db->query($sql) or die("GET_RCVs: " . $db->error . $sqlHTML);
-	
+
 	if(mysqli_num_rows($rs)) {
-		while($tmp = $rs->fetch_assoc()) { 
-			$rcvId = $tmp["receivingId"];
-			$array1 = array_slice($tmp, 0, 22);
-			$array2 = array_slice($tmp, 22, 13);
-			if(!isset($tmp2[$rcvId])) {
-				$array1["numItems"] = 0;
+		while($tmp = $rs->fetch_assoc()) {
+			$poNo = $tmp["poNo"];
+			$array1 = array_slice($tmp, 0, 2);
+			$array2 = array_slice($tmp, 2, 7);
+			if(!isset($tmp[$poNo])) {
 				$array1["items"] = array();
-				$tmp2[$rcvId] = $array1;
+				$tmp[$poNo] = $array1;
 			}
-			$tmp2[$rcvId]["numItems"]++;
-			$tmp2[$rcvId]["items"][] = $array2; 
+			$tmp2[$poNo]["items"][] = $array2;
 		}
 	}
-	
+
 	$data["rq"]["rcv"] = array_values($tmp2);
-	
-	
+
 } else {
 
 	//list of rqs
@@ -92,19 +100,19 @@ if($rqId && is_numeric($rqId)) {
 		$tmp["refPOs"] = "";
 		$data["rqlist"][$tmp["distributionId"]] = $tmp;
 	}
-	
+
 	$sql2 = "SELECT
 				a.distributionId,
 				a.distributionItemId,
 				a.requisitionItemId,
 				b.requisitionId,
 				c.poNo
-			FROM 
-				${distribItemsTable} a, 
+			FROM
+				${distribItemsTable} a,
 				${rqItemsTable} b,
 				${rqTable} c
-			WHERE 
-				a.requisitionItemId=b.requisitionItemId AND 
+			WHERE
+				a.requisitionItemId=b.requisitionItemId AND
 				b.requisitionId=c.requisitionId
 			GROUP BY a.distributionId, c.poNo";
 
@@ -115,7 +123,7 @@ if($rqId && is_numeric($rqId)) {
 	while($tmp = $rs->fetch_assoc()) {
 		$data["rqlist"][$tmp["distributionId"]]["refPOs"] .= $tmp["poNo"] . " ";
 	}
-	
+
 	$data["rqlist"] = array_values($data["rqlist"]);
 }
 
