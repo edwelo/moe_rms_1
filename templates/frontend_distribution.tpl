@@ -49,7 +49,7 @@
 	<button onclick="setRQId(0)">Back to List</button>
 	<center>Distribution ID <span id="rqId" style="font-weight: bold;"></span></center>
 
-	<div class = "align-left" style="width: 45%;">
+	<div class = "align-left" style="width: 35%;">
 	  <table id = "distTable">
 		<caption> receivingId, receivingItemId, requisitionItemId, description, quantity </caption>
 		<tr> 
@@ -72,7 +72,7 @@
 	  </table>
 	</div>
 
-	<div class = "align-right" style="width: 55%;">
+	<div class = "align-right" style="width: 65%;">
 		
 		<form id = "MyForm"> 
 			Form ID:          <input type="text" name="formid" value="" >
