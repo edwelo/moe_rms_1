@@ -79,6 +79,10 @@ hr {
 #login {
 	display: inline;
 	color: #ddd;
+    box-shadow: 0px 0px;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
 }
 
 .header #login a{
@@ -125,6 +129,10 @@ td, th {
     vertical-align: middle;
 }
 
+tr {
+    cursor: pointer;
+}
+
 .level2table td{
     padding: 0px;
 }
@@ -151,7 +159,7 @@ th {
 
 /*Buttons*/
 
-button {
+.level1button {
     -moz-box-shadow: inset 0px 1px 0px 0px #3985B1;
     -webkit-box-shadow: inset 0px 1px 0px 0px #3985B1;
     box-shadow: inset 0px 1px 0px 0px #3985B1;
@@ -163,9 +171,22 @@ button {
     padding: 12px;
 }
 
-button:hover {
+.level1button:hover {
 	background: linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
     background-color: #17445E;
+}
+
+.level2button {
+    box-shadow: inset 0px 1px 0px 0px #3985B1;
+    background-color: #2D77A2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 3px 7px;
+}
+
+.level2button:hover {
+    background-color: #5186a5;
 }
 
 /*Forms and Inputs */
@@ -190,7 +211,7 @@ input {
 }
 
 .level2table .big {
-    width: 90%;
+    width: 95%;
 }
 
 input[type="checkbox"] {
