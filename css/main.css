@@ -76,6 +76,11 @@ hr {
 	color: #305A72;
 }
 
+#selected {
+    background-color:white;
+    color: #305A72; 
+}
+
 #login {
 	display: inline;
 	color: #ddd;
@@ -156,6 +161,11 @@ th {
     font-weight: normal;
 }
 
+#formViewLeftPanel {
+    height: 850px;
+    overflow-y: scroll;
+}
+
 
 /*Buttons*/
 
@@ -202,6 +212,18 @@ input {
     margin: 5px;
 }
 
+input[type="submit"] {
+    -moz-box-shadow: inset 0px 1px 0px 0px #3985B1;
+    -webkit-box-shadow: inset 0px 1px 0px 0px #3985B1;
+    box-shadow: inset 0px 1px 0px 0px #3985B1;
+    background-color: #305A72;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #FFFFFF;
+    padding: 12px;
+}
+
 .level2table .small {
     width: 50px;
 }
@@ -230,4 +252,11 @@ form {
     -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
     padding: 10px;
+}
+
+#login_page {
+    margin: 10px 0px;
+    box-shadow: 0px 0px;
+    border: 0px;
+    padding: 10px;    
 }

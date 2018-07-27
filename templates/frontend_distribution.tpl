@@ -54,7 +54,7 @@
 		</div>
 
 		<!-- changed the id of this div  from "setheight" to "formViewLeftPanel" -->
-		<div id = "formViewLeftPanel" class = "align-left" style="width: 35%;"">
+		<div id = "formViewLeftPanel" class = "align-left" style="width: 34%;"">
 
 			<!-- changed the id of this table from "distTable" to "rcvTable" -->
 			<table id = "rcvTable">
