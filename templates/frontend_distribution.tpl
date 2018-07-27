@@ -42,7 +42,7 @@
 
 		<!-- added this div wrapper -->
 		<div id="formViewHeader">
-		
+
 			<div class="align-right">
 				<button onclick="print_rq();">Print</button>
 				<button onclick="main('button');">Save</button>
@@ -59,18 +59,19 @@
 			<!-- changed the id of this table from "distTable" to "rcvTable" -->
 			<table id = "rcvTable">
 
-				<tr> 
+				<tr>
 				  <th>RcvInfo</th>
 				  <th> Description </th>
 				  <th> Quantity </th>
 				  <th> </th>
 				</tr>
 
-				<tr> 
+				<tr>
 				  <td><data value="receivingId"></data> <data value="receivingItemId"></data> <data value="requisitionItemId"></data></td>
 				  <td><data value="description"></data></td>
 				  <td><data value="quantity"></data></td>
-				  <td class="btn btn-info btn-lg" id = "plus"> + </td>
+				  <td class="btn btn-info btn-lg" id = "plus">
+				  	<span onclick="addRowHandlers(this);" style="cursor: pointer;"> + </span></td>
 				</tr>
 			</table>
 		</div>
@@ -79,7 +80,7 @@
 		<div id = "formViewRightPanel" class = "align-right" style="width: 55%;">
 
 			<form id = "MyForm">
-			
+
 				<!-- added this div wrapper -->
 				<div id="distInfo">
 					Distrib Id:		<input type="text" name="distributionId" value="" size=4 />
@@ -98,7 +99,7 @@
 
 				<!-- changed the id of this table from "distTable2" to "distTable" -->
 				<table id = "distTable">
-					<tr> 
+					<tr>
 						<th>DistInfo</th>
 						<th>Description</th>
 						<th>Qty</th>
@@ -133,7 +134,7 @@
 							<input type="text" name="serialNo" value="" size=15 />
 						</td>
 						<td>
-							<input type="checkbox" name="del" value=0 onclick="deleteDistItem(this);"/>
+							<input type="checkbox" name="del" value=0 onclick="deleteDistItem(this);" />
 						</td>
 					</tr>
 				</table>
