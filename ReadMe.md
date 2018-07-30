@@ -12,11 +12,6 @@ Software issues raised:
 * Some staff went ahead and commented on other unfinished features. We explained that those were still under construction. But the entry functions do work and data entry can begin.
 * These should be fixed by Friday so staff can begin entering FY2018 data on Monday.
 
-Ongoing development
-
-* Ameeshi will create a new branch (called css) and work on styling and presentation
-* Edwel will create a new branch (called New_Branch) and work on populating, editing, and saving the two tables in the distribution form.
-
 ## 2018-07-07
 
 The app structure is complete and uploaded to Ameeshi's github today.
@@ -47,35 +42,17 @@ the folder "js" contains the project's javascript files, which are loaded by the
 
 * The module that will be used by Bonnie to enter, edit, and print requistions
 * The page is working as expected. Provides the basic functionality.
-* A placeholder page, requisitioning\_rq\_print.html, will be the rq print form if Ameeshi will use html and css. If the form will be pdf, then ...
-
-To be done
-
-* Edwel to connect the page to the backend and try it out
-* Ameeshi to develop the print form
-* Ameeshi to look into improving the "look and feel"
-* Ameeshi to review code and suggest improvements/additions
+* A placeholder page, requisitioning\_rq\_print.html, will be the rq print form.
 
 ### receiving.html
 
 * The module that will be used by Saburo to record received items.
 * The page is working as expected. Provides the basic functionality.
 
-To be done
-
-* Edwel to connect the page to the backend and try it out
-* Ameeshi to look into improving the "look and feel"
-* Ameeshi to review code and suggest improvements/additions
-
 ### distribution.html
 
 * The module that will be used by Saburo for item distribution
 * Just a placeholder now. The module has not been started.
-
-To be done
-
-* Edwel to develop the functionality specs
-* Then Ameeshi to code the functionality
 
 ### inventory.html
 
