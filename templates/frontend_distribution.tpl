@@ -60,14 +60,19 @@
 			<table id = "rcvTable">
 
 				<tr>
-				  <th>RcvInfo</th>
-				  <th> Description </th>
-				  <th> Quantity </th>
+				  <th>PO</th>
+				  <th>Description</th>
+				  <th>Qty</th>
 				  <th> </th>
 				</tr>
 
 				<tr>
-				  <td><data value="receivingId"></data> <data value="receivingItemId"></data> <data value="requisitionItemId"></data></td>
+				  <td>
+				  	<data value="poNo"></data>
+					<data value="receivingId" style="display: none;"></data>
+					<data value="receivingItemId" style="display: none;"></data>
+					<data value="requisitionItemId" style="display: none;"></data>
+				  </td>
 				  <td><data value="description"></data></td>
 				  <td><data value="quantity"></data></td>
 				  <td class="btn btn-info btn-lg" id = "plus">
@@ -100,7 +105,7 @@
 				<!-- changed the id of this table from "distTable2" to "distTable" -->
 				<table id = "distTable" class="level2table">
 					<tr>
-						<th>DistInfo</th>
+						<th>PO</th>
 						<th>Description</th>
 						<th>Qty</th>
 						<th>AssetTag</th>
@@ -111,10 +116,8 @@
 
 					<tr>
 						<td>
-							<data value="distributionItemId"></data>&nbsp;
-							<data value="receivingItemId"></data>&nbsp;
-							<data value="requisitionItemId"></data>
-							<input type=hidden name="distributionItemId" value="" />
+							<data value="poNo"></data>&nbsp;
+ 							<input type=hidden name="distributionItemId" value="" />
 							<input type=hidden name="receivingItemId" value="" />
 							<input type=hidden name="requisitionItemId" value="" />
 						</td>

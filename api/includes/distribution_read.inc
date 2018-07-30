@@ -8,13 +8,15 @@ if($rqId && is_numeric($rqId)) {
 
 	$sql = "
 		SELECT
-			*
+			a.*, b.*, c.poNo, c.poDate
 		FROM
 			${distribTable} a LEFT JOIN
-			${distribItemsTable} b ON a.distributionId=b.distributionId
+			${distribItemsTable} b ON a.distributionId=b.distributionId,
+			${rqTable} c
 		WHERE
 			a.isValid NOT LIKE 'x%' AND
 			b.isValid NOT LIKE 'x%' AND
+			b.requisitionId = c.requisitionId AND
 			a.distributionId=${rqId}";
 
 	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
@@ -28,7 +30,7 @@ if($rqId && is_numeric($rqId)) {
 		while($tmp = $rs->fetch_assoc()) {
 			$distId = $tmp["distributionId"];
 			$array1 = array_slice($tmp, 0, 12);
-			$array2 = array_slice($tmp, 12, 9);
+			$array2 = array_slice($tmp, 12, 12);
 			if(!isset($data["rq"]["distrib"]["distributionId"])) {
 				$array1["numItems"] = 0;
 				$array1["items"] = array();
@@ -38,6 +40,8 @@ if($rqId && is_numeric($rqId)) {
 			$data["rq"]["distrib"]["items"][] = $array2;
 		}
 	}
+
+	//rcv list and items
 
 	$sql = "
 		SELECT
