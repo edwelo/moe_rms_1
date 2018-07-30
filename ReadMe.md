@@ -1,6 +1,24 @@
 # TCinGC MOE 2018
 
+## 2018-07-31
+
+### Need Changes - Presentation.
+
+Login/Logout
+
+* When logged in, looks like "logout Edwel Ongrung"
+* When not logged in, looks like "login Not Logged in"
+* Make the "Edwel Ongrung" and "Not logged In" much less prominent (smaller?) to clearly differentiate it from the "logout" and "login". The way it is now, it is hard to tell which part to click in order to perform the login/logout.
+
+Modules Menu (Info, Requisitioning, Receiving, ...)
+
+* When highlighted, takes up almost the whole height of the parent div.
+* Make the height of the element 'thinner' with equal margins top and bottom.
+* The effect should be a vertically centered white box with the margins allowing an equal amount of green to be shown above and below.
+
 ## 2018-07-25
+
+### Initial App Training
 
 The data entry functions of Requisitioning and Receiving are working well enough for staff to begin entering data. This was tested at a training/testing session held today with Den, Bonnie, TE, Ole, Adeline, Laurie, Mary, Orchid, Emrei.
 
@@ -11,6 +29,11 @@ Software issues raised:
 * Possibly make selector tool for org, acc, etc.
 * Some staff went ahead and commented on other unfinished features. We explained that those were still under construction. But the entry functions do work and data entry can begin.
 * These should be fixed by Friday so staff can begin entering FY2018 data on Monday.
+
+Most of the discussion actually revolved around the requisitioning process and not on the app itself. Some of the process issues brought to head by the app, and consequently raised by staff include:
+
+* Division of responsibility. Participants were mostly responsible for requisitioning. They wanted to know where their tasks stopped, where Saburo's started, etc. This is a job description problem for these staff. Saburo's JD addresses his part. Without clear JD's, this needs constant negotiation to ensure it works. It is a weak point in the process. Any staff forgets or decides not to use the system reduces the system's usability and there is really no formal way to prevent that.
+* Formal numbering of authorization forms. Mentioned options are app issued, manually issued by unit staff (eg., moe001 for moe unit, DSM001 for DSM unit, etc). There is no authorization procedure so right now the app can only have a non-required field for manually inputing an auth number in case people want to do numbering.
 
 ## 2018-07-07
 
