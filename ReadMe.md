@@ -2,7 +2,9 @@
 
 This app is a project of the MOE/TCinGC partnership for 2018. The goal of the project is to develop a tool that will improve the efficiency of MOE's existing paper based expenditure tracking process.
 
-Analysis of the process reveals four distinct major steps: Requisitioning, Receiving, Distribution, and Inventory. The app addresses each of the major steps with corresponding modules.
+Analysis of the process reveals four distinct major steps: Requisitioning, Receiving, Distribution, and Inventory. The app addresses each of the major steps with corresponding modules. The modules are not stand-alone. Following the existing process, the flow goes like this: Requisitioning -> Receiving -> Distribution -> Inventory.
+
+The MOE's expectation its process improvements is to eventually be able to implement all the pieces of an IPOLO design. The 10 week duration of the project prevented the inclusion of a logical fifth major step, Reporting.
 
 ## 2018-07-31
 
