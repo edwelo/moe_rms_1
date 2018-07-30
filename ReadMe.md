@@ -14,7 +14,7 @@ Presentation width
 
 * The app's width is set at about 1200px to accommodate certain tables that require a lot of space or for situations where sets of info need to be displayed side by side.
 * This doesn't work so well for non-tabular info, eg., the Info page. For these types of cases, the presentation is too wide for comfortable reading. Guidelines recommend 80 or less characters per line.
-* Maybe implement some means of limiting content to a comfortable if it does not need all the horizontal space?
+* Maybe implement some means of limiting content to a comfortable width if it does not need all the horizontal space?
 
 Login/Logout
 
