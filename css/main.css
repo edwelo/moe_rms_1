@@ -40,6 +40,7 @@ hr {
 #site_wrap {
 	width: 1200px;
 	margin: auto;
+
 }
 
 /*Header*/
@@ -108,6 +109,7 @@ hr {
     box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     border: 6px solid #305A72;
+    font-size: 14px;
 }
 
 /*Tables*/
@@ -125,6 +127,7 @@ table {
     -moz-border-radius: 5px 5px 5px 5px;
     -webkit-border-radius: 5px 5px 5px 5px;
     border-collapse: collapse;
+    font-size: 14px;
 }
 
 td, th {
@@ -140,6 +143,7 @@ tr {
 
 .level2table td{
     padding: 0px;
+    padding-left: 4px;
 }
 
 tr:nth-child(even) {

@@ -98,7 +98,7 @@
 				</div>
 
 				<!-- changed the id of this table from "distTable2" to "distTable" -->
-				<table id = "distTable">
+				<table id = "distTable" class="level2table">
 					<tr>
 						<th>DistInfo</th>
 						<th>Description</th>
