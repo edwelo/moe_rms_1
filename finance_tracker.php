@@ -50,7 +50,7 @@ if($_POST["log_action"] == "login") {
 	$page_content = file_get_contents("templates/frontend_" . strtolower(str_replace(" ", "", $page_name)) . ".tpl");
 	if($page_name == "Info") {
 		$pd = new Parsedown();
-		$pd_content = file_get_contents("templates/frontend_" . strtolower(str_replace(" ", "", $page_name)) . ".md");
+		$pd_content = file_get_contents("ReadMe.md");
 		$page_content = str_replace("{content}", $pd->text($pd_content), $page_content);
 	}
 

@@ -1,8 +1,18 @@
-# TCinGC MOE 2018
+# MOE Expenditure Tracking App
+
+This app is a project of the MOE/TCinGC partnership for 2018. The goal of the project is to develop a tool that will improve the efficiency of MOE's existing paper based expenditure tracking process.
+
+Analysis of the process reveals four distinct major steps: Requisitioning, Receiving, Distribution, and Inventory. The app addresses each of the major steps with corresponding modules.
 
 ## 2018-07-31
 
 ### Need Changes - Presentation.
+
+Presentation width
+
+* The app's width is set at about 1200px to accommodate certain tables that require a lot of space or for situations where sets of info need to be displayed side by side.
+* This doesn't work so well for non-tabular info, eg., the Info page. For these types of cases, the presentation is too wide for comfortable reading. Guidelines recommend 80 or less characters per line.
+* Maybe implement some means of limiting content to a comfortable if it does not need all the horizontal space?
 
 Login/Logout
 
