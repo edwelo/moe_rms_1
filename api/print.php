@@ -53,8 +53,15 @@ if($rqId && is_numeric($rqId)) {
 	if(in_array($items[0]["org"], $bciOrgs)) $rqInfo["director"] = "Debbie Tkel-Sbal";
 	if(in_array($items[0]["org"] . "-" . strtoupper($items[0]["costCenter"]), $bciOrgs)) $rqInfo["director"] = "Debbie Tkel-Sbal";
 
-	$rqInfo["minister"] = "Sinton Soalablai";
 	$rqInfo["procurementOfficer"] = "Millan Isak";
+	foreach($items as $row) {
+		if($row["acc"]) == "1623") { $rqInfo["procurementOfficer"] = "Brian Melairei"; break; }
+		if($row["acc"]) == "1235" || $row["acc"]) == "1223") { $rqInfo["procurementOfficer"] = "Angeline U. Imetengel"; break; }
+	}
+	if(in_array($items[0]["org"], $bciOrgs)) $rqInfo["director"] = "Debbie Tkel-Sbal";
+	if(in_array($items[0]["org"] . "-" . strtoupper($items[0]["costCenter"]), $bciOrgs)) $rqInfo["director"] = "Debbie Tkel-Sbal";
+
+	$rqInfo["minister"] = "Sinton Soalablai";
 	$rqInfo["budgetROP"] = "Casmir Remengesau";
 
 	foreach($rqInfo as $key=>$value) {
