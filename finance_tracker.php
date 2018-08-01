@@ -52,6 +52,8 @@ if($_POST["log_action"] == "login") {
 		$pd = new Parsedown();
 		$pd_content = file_get_contents("ReadMe.md");
 		$page_content = str_replace("{content}", $pd->text($pd_content), $page_content);
+		$pd_content = file_get_contents("templates/frontend_info_sidebar.md");
+		$page_content = str_replace("{content2}", $pd->text($pd_content), $page_content);
 	}
 
 }
