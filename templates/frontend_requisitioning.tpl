@@ -1,11 +1,13 @@
 	<!-- requisition list section -->
-	<div id="rqList" class="div_wrap" style="display: none;">
+	<div id="listView" class="div_wrap" style="display: none;">
 
-		<div class="align-right">
-			<button class = "level1button" onclick="setRQId('new')">New RQ</button>
+		<div id="listViewHeader">
+			<div class="align-right">
+				<button class = "level1button" onclick="setRQId('new')">New RQ</button>
+			</div>
+			List of Purchase Orders.
+			<span style="color: grey;">Click on a row to edit.</span> <br><br>
 		</div>
-		List of Purchase Orders. 
-		<span style="color: grey;">Click on a row to edit.</span> <br><br>
 
 		<table id="rqListTable" class="tbl">
 			<!-- Field names in the caption element. These match  data source field names.
@@ -52,33 +54,39 @@
 	</div>
 
 	<!-- requisition form section -->
-	<div id="rq" class="div_wrap" style="display: none;">
+	<div id="formView" class="div_wrap" style="display: none;">
 
-		<div class="align-right">
-			<button class = "level1button" onclick="print_rq();">Print</button>
-			<button class = "level1button" onclick="main('button');">Save</button>
+		<div id="formViewHeader">
+			<div class="align-right">
+				<button class = "level1button" onclick="print_rq();">Print</button>
+				<button class = "level1button" onclick="main('button');">Save</button>
+			</div>
+			<div class="align-left"><button class = "level1button" onclick="setRQId(0)">Back to List</button></div>
+			<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
+			<div style="clear: both;"></div>
+
+			<br />
 		</div>
-		<div class="align-left"><button class = "level1button" onclick="setRQId(0)">Back to List</button></div>
-		<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
-		<div style="clear: both;"></div>
-		
-		<br />
 
-		<form id = "MyForm">
-			<div id="rqData">
+		<div id="formViewData">
+
+			<div id="rqData" style="padding: 0 2em 0 2em;">
 				Office: 		<input type="text" name="initiatingOffice" value="" />
 				RqBy: 			<input type="text" name="requestedBy" value="" />
 				PrepBy: 		<input disabled type="text" name="preparedByName" value="" /><input type=hidden name="preparedById" value="" />
-				PrepDate: 		<input type="text" name="preparedDate" value=""/>
-				RqAmount: 	   $<input type=text name="rqAmount" value=""/>
-				RqApprvDate: 	<input type="text" name="approvedDate" value=""/>
-				Vendor: 		<input type="text" name="vendorId" value=""/>
-								<input disabled name="vendorName" value="" />
-				Justification:	<input type="text" name="justification" value="" size = 100%/>
-				PO: 			<input type="text" name="poNo" value=""/>
-				PO Type: 		<input type="text" name="poType" value=""/>
-				PO Date:		<input type="text" name="poDate" value="" />
-				PO Amount: 	   $<input type="text" name="poAmount" value=""  />
+				PrepDate: 		<input type="text" name="preparedDate" value="" size=10 />
+				RqAmount: 	   $<input type=text name="rqAmount" value="" readonly size=12 />
+				RqApprvDate: 	<input type="text" name="approvedDate" value="" size=10 /><br />
+
+				Vendor: 		<input type="text" name="vendorId" value="" size=2 />
+								<input disabled name="vendorName" value="" /><br />
+
+				Justification:	<input type="text" name="justification" value="" size = 100% /><br />
+
+				PO: 			<input type="text" name="poNo" value="" size=10 />
+				PO Type: 		<input type="text" name="poType" value="" size=10 />
+				PO Date:		<input type="text" name="poDate" value="" size=10 />
+				PO Amount: 	   $<input type="text" name="poAmount" value="" size=12 />
 			</div>
 
 			<table id = "items_table" class="level2table">
@@ -113,5 +121,5 @@
 			</table>
 			<button class = "level2button" onclick="copyRow('items_table');"> + </button>
 			<button class = "level2button" onclick="deleteRow('items_table');"> - </button>
-		</form>
+		</div>
 	</div>

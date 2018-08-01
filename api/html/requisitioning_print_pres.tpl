@@ -55,7 +55,7 @@
 			color: #ccc;
 		}
 
-		#items_div { position: relative; height: 130mm; }
+		#items_div { position: relative; height: 114mm; }
 
 		#items_table { table-layout: fixed; width: 100%; border-collapse: collapse; border: none; }
 		#items_table tr { vertical-align: top; }
@@ -63,13 +63,13 @@
 
 		#itemsBackground_table { position: absolute; top: 0; left: 0;
 				table-layout: fixed; width: 100%; border-collapse: collapse; border: 1px solid #ccc; }
-		#itemsBackground_table td { height: 129mm; border: 1px solid #ccc; font-size: small; }
+		#itemsBackground_table td { height: 113mm; border: 1px solid #ccc; font-size: small; }
 
-		#rqTotal { width: 30mm; margin-left: 103mm; padding-right: 2mm; border: 1px solid #ccc; text-align: right; }
+		#rqTotal { width: 30mm; margin-left: 113mm; padding-right: 2mm; border: 1px solid #ccc; text-align: right; }
 
 		#justification { height: 32mm; padding-right: 2em; }
 
-		#footer_table { table-layout: fixed; width: 100%; border-collapse: collapse; border: 1px solid #ccc; }
+		#footer_table { table-layout: fixed; width: 100%; border-collapse: collapse; border: none; }
 		#footer_table th { border: 1px solid #ccc; padding: 0 4px 0 4px; }
 		#footer_table td { border: 1px solid #ccc; padding: 0 4px 0 4px; vertical-align: top; }
 
@@ -263,6 +263,22 @@
 				</td>
 				<td>
 					<span class=lbl1>Date:</span><br /><br />
+				</td>
+			</tr>
+			<tr class="footer">
+				<td colspan=2>
+					<span class=lbl1>Approved by President ROP:</span><br /><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<span style="font-size: small;">Tommy E. Remengesau, Jr.</span>
+				</td>
+				<td>
+					<span class=lbl1>Date:</span><br /><br />
+				</td>
+				<td colspan=2 style="border: none;">
+
+				</td>
+				<td style="border: none;">
+
 				</td>
 			</tr>
 		</table>
