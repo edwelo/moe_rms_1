@@ -9,7 +9,11 @@ if($rqId && is_numeric($rqId)) {
 	$sql = "
 		SELECT
 			a.*,
-			b.vendorName, d.description,
+			b.vendorId AS vId, b.vendorName AS vName,
+			CONCAT(b.address1, ' ', b.address2) AS vAddress,
+			CONCAT(b.city, ', ', b.state, ' ', b.zip) AS vCityStateZip,
+			CONCAT(b.phone, ' ', b.fax, ' ', b.email) AS vContact,
+			d.description,
 			SUM(IF(d.requisitionId, 1, 0)) AS numItems,
 			SUM(ROUND(d.quantity * d.price, 3)) AS rqAmount
 		FROM
