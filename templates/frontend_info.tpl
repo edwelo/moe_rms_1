@@ -1,7 +1,7 @@
 <div class="div_wrap">
 
 	<div class="sidebar_right_30">
-		{content2}
+		{sidebar}
 	</div>
 
 	{content}
