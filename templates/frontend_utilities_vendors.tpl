@@ -67,30 +67,26 @@
 	</div>
 
 	<div id="formViewData" style="margin: 1em; padding: 1em; border: 1px solid green;">
-	
+
 		<span class=lbl1>Id: </span><input name="vendorId" value="" size=10 />
-		<span class=lbl1>Name: </span><input name="vendorName" value="" size=10 />
+		<span class=lbl1>Name: </span><input name="vendorName" value="" size=50 />
 		<br />
-		
-		<span class=lbl1>Addr1/2: </span><input name="address1" value="" size=10 />
-			<input name="address2" value="" size=10 />
+
+		<span class=lbl1>Addr1/2: </span><input name="address1" value="" size=30 />
+			<input name="address2" value="" size=30 />
 		<br />
-		
+
 		<span class=lbl1>City/State/Zip: </span><input name="city" value="" size=10 />
 			<input name="state" value="" size=10 />
 			<input name="zip" value="" size=10 />
-		<br />
-		
-		<span class=lbl1>Tel/Fax: </span><input name="telephone" value="" size=10 />
-			<input name="facsimile" value="" size=10 />
-		<br />
-		
-		<span class=lbl1>Email/Web: </span><input name="email" value="" size=10 />
-			<input name="website" value="" size=10 />
-	</div>
+		&nbsp;&nbsp;&nbsp;
 
-	<div id="formViewDataItems" style="margin: 1em; padding: 1em; border: 1px solid green;">
-		Form View Header Data Items
+		<span class=lbl1>Tel/Fax: </span><input name="telephone" value="" size=12 />
+			<input name="facsimile" value="" size=12 />
+		<br />
+
+		<span class=lbl1>Email/Web: </span><input name="email" value="" size=30 />
+			<input name="website" value="" size=30 />
 	</div>
 
 </div>

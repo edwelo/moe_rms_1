@@ -2,75 +2,74 @@
 	<div id="listView" class="div_wrap" style="display: none;">
 
 		<div id="listViewHeader">
-			<div class="align-right">
+			<div class="header-right">
 				<button class = "level1button" onclick="setRQId('new')">New RQ</button>
 			</div>
 			List of Purchase Orders.
 			<span style="color: grey;">Click on a row to edit.</span> <br><br>
 		</div>
 
-		<table id="rqListTable" class="tbl">
-			<!-- Field names in the caption element. These match  data source field names.
-				Must be one contiguous line, no spaces after or before commas.
-				Must have 1 to 1 correspondence with the th's below. To change the
-				items in the rq list, change the field names and the corresponding th's. -->
-			<caption>
-				requisitionId,initiatingOffice,requestedBy,preparedByName,preparedDate,vendorName,numItems,rqAmount,justification,poNo,poDate
-			</caption>
-			<tr>
-				<th>Id</th>
-				<th>Office<br />Requested By</th>
-				<th>Prepared By<br />PrepDate</th>
-				<th>Vendor / Amount / numItems</th>
-				<th>Justification</th>
-				<th>PO No/Date</th>
-			</tr>
-			<tr>
-				<td>
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span><br />
-					<span></span>
-				</td>
-				<td>
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span>
-				</td>
-			</tr>
-		</table>
+		<div id="listViewDetail">
+			<table id="rqListTable" class="level1table">
+				<caption>
+					requisitionId,initiatingOffice,requestedBy,preparedByName,preparedDate,vendorName,numItems,rqAmount,justification,poNo,poDate
+				</caption>
+				<tr>
+					<th>Id</th>
+					<th>Office<br />Requested By</th>
+					<th>Prepared By<br />PrepDate</th>
+					<th>Vendor / Amount / numItems</th>
+					<th>Justification</th>
+					<th>PO No/Date</th>
+				</tr>
+				<tr>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span><br />
+						<span></span>
+					</td>
+					<td>
+						<span></span><br />
+						<span></span>
+					</td>
+					<td>
+						<span></span><br />
+						<span></span><br />
+						<span></span>
+					</td>
+					<td>
+						<span></span>
+					</td>
+					<td>
+						<span></span><br />
+						<span></span>
+					</td>
+				</tr>
+			</table>
+		</div>
 	</div>
 
 	<!-- requisition form section -->
 	<div id="formView" class="div_wrap" style="display: none;">
 
-		<div id="formViewHeader">
-			<div class="align-right">
+		<div id="formViewHeader" style="text-align: center;">
+			<div class="header-right">
 				<button class = "level1button" onclick="print_rq();">Print</button>
-				<button class = "level1button" onclick="main('button');">Save</button>
+				<button class = "level1button" onclick="main('save');">Save</button>
 			</div>
-			<div class="align-left"><button class = "level1button" onclick="setRQId(0)">Back to List</button></div>
-			<center>Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
+			<div class="header-left">
+				<button class="level1button" onclick="setRQId(0)">Back to List</button>
+			</div>
+			<h2>Requisition ID <span id="rqId" style="font-weight: bold;"></span></h2>
 			<div style="clear: both;"></div>
-
 			<br />
 		</div>
 
-		<div id="formViewData">
+		<div id="formViewData" class="div_wrap2">
 
-			<div id="rqData" style="padding: 0 2em 0 2em;">
+			<div id="rqData">
 				Office: 		<input type="text" name="initiatingOffice" value="" />
 				RqBy: 			<input type="text" name="requestedBy" value="" />
 				PrepBy: 		<input disabled type="text" name="preparedByName" value="" /><input type=hidden name="preparedById" value="" />

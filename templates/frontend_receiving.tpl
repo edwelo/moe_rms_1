@@ -1,11 +1,11 @@
 	<!-- requisition list section -->
-	<div id="rqList" class="div_wrap" style="display: none;">
+	<div id="listView" class="div_wrap" style="display: none;">
 
 		List of Purchase Orders.
 		<span style="color: grey;">Click on a row to edit.</span> <br><br>
 
-		<table id="rqListTable" class="tbl">
-			<!-- Field names in the caption element. These match  data source field names.
+		<table id="rqListTable" class="level1table">
+			<!-- Field names in the caption element. These match data source field names.
 				Must be one contiguous line, no spaces after or before commas.
 				Must have 1 to 1 correspondence with the th's below. To change the
 				items in the rq list, change the field names and the corresponding th's. -->
@@ -54,17 +54,19 @@
 		</table>
 	</div>
 
-	<!-- requisition section -->
-	<div id="rq" class="div_wrap" style="display: none;">
+	<div id="formView" class="div_wrap" style="display: none;">
 
-		<div class="align-right">
-			<button class = "level1button" id="btnRcvAction">&nbsp;&nbsp;</button>
+		<div id="formViewHeader">
+			<div class="header-right">
+				<button class = "level1button" id="btnRcvAction">&nbsp;&nbsp;</button>
+			</div>
+			<div class="header-left">
+				<button class = "level1button" onclick="setRQId(0)">Back to List</button>
+			</div>
+			<h2>Requisition ID <span id="rqId" style="font-weight: bold;"></span></h2>
+			<div style="clear: both;"></div>
+			<br />
 		</div>
-		<button class = "level1button" onclick="setRQId(0)">Back to List</button>
-		<center> Requisition ID <span id="rqId" style="font-weight: bold;"></span></center>
-		<div style="clear: both;"></div>
-
-		<br />
 
 		<div id="rqData">
 			PO Info: 		<data value="poNo"></data>&nbsp;&nbsp;
@@ -80,7 +82,7 @@
 
 		<div id="rcvList">
 
-			<hr/>
+			<hr />
 
 			List of Receivings
 			<table id = "rcvListTable" class="level2table">
@@ -111,13 +113,13 @@
 			</table>
 		</div>
 
-		<div id="rcv">
-
-			<hr/>
+		<div id="rcv" class="div_wrap2">
 
 			<div id="rcvData">
 				<button class = "level2button" type="button" onclick="setRcvId(0);">&nbsp; < &nbsp;</button>&nbsp;
 				<span>Receiving Id Number: #<data value="receivingId"></data></span><br />
+
+				<hr />
 
 				<input type="hidden" name="requisitionId" value="" />
 
@@ -127,12 +129,14 @@
 				PrepBy:		<input type=text name="preparedBy" value="" size=25 />
 				PrepDate:	<input type="text" name="preparedDate" value="" size=12 />
 
+				<br />
 
-				AuthNo:		<input type=text name="authNo" value="" size=25 />
+				AuthNo:		<input type=text name="authNo" value="" size=12 />
 				AuthDate:	<input type="text" name="authDate" value="" size=12 />
 				AuthAmount:	<input type="text" name="authAmount" value="" size=12 />
-				Purpose:	<input type=text name="justification" value="" size=80 />
+				Purpose:	<input type=text name="justification" value="" size=60 />
 
+				<br />
 
 				RcvBy:		<input type=text name="rcvBy" value="" size=25 />
 				RcvDate:	<input type="text" name="rcvDate" value="" size=12 />
@@ -141,12 +145,15 @@
 				InvAmt:		<input type="text" name="invoiceAmount" value="" size=12 />
 				Date:		<input type="text" name="statusDate" value="" size=20 />
 
+				<br />
 
 				Remarks:	<input type="text" name="remarks" value="" size=120 />
 
 			</div>
+			
+			<hr />
 
-			<table id = "rcvTable" class="tbl">
+			<table id = "rcvTable" class="level3table">
 				<tr>
 					<th> Id </th>
 					<th> RqItemInfo </th>

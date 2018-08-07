@@ -49,18 +49,18 @@ if($_POST["log_action"] == "login") {
 } else {
 
 	$tplFilePath = "templates/frontend_" . strtolower(str_replace(" ", "", $page_name)) . ".tpl";
-	
+
 	if(is_file($tplFilePath)) {
-	
+
 		$page_content = file_get_contents($tplFilePath);
-		
+
 		//check for presence of sidebar and add it to content
 		if(stripos($page_content, "{sidebar}")) {
 			//look for sidebar file. tpl has precedence over md file.
 			$tmp = str_replace(".tpl", "_sidebar.tpl", $tplFilePath);
 			if(is_file($tmp)) {
-				echo "tpl sidebar!<br />";
-				$page_content = str_replace("{side_bar}", $tmp, $page_content);
+				$tmp = file_get_contents($tmp);
+				$page_content = str_replace("{sidebar}", $tmp, $page_content);
 			} else {
 				$tmp = str_replace(".tpl", ".md", $tmp);
 				if(is_file($tmp)) {
@@ -71,7 +71,7 @@ if($_POST["log_action"] == "login") {
 			}
 		}
 
-		//check for additional content and add it		
+		//check for additional content and add it
 
 		if(stripos($page_content, "{content}")) {
 
@@ -81,13 +81,13 @@ if($_POST["log_action"] == "login") {
 				$pd = new Parsedown();
 				$page_content = str_replace("{content}", $pd->text($tmp), $page_content);
 			}
-			
+
 			//Additional content for the other pages are parts of sub modules.
 			//$_GET["t1"] identifies the sub module.
 			//We check for sub module, and alert if there isn't any
 			if(trim($_GET["t1"])) {
 				$tmp = strtolower(str_replace(" ", "", trim($_GET["t1"])));
-				$tmp = str_replace(".tpl", "_${tmp}.tpl", $tplFilePath); 
+				$tmp = str_replace(".tpl", "_${tmp}.tpl", $tplFilePath);
 				//check for tpl file
 				if(is_file($tmp)) {
 					$additionalContent = file_get_contents($tmp);
@@ -99,7 +99,7 @@ if($_POST["log_action"] == "login") {
 					if(is_file($tmp)) {
 						$pd = new Parsedown();
 						$additionalContent = $pd->text(file_get_contents($tmp));
-					}		
+					}
 				}
 				//insert the additional content
 				$page_content = str_replace("{content}", $additionalContent, $page_content);
@@ -110,10 +110,10 @@ if($_POST["log_action"] == "login") {
 		}
 
 	} else {
-	
+
 		$page_content = file_get_contents("templates/no_content.tpl");
 	}
-	
+
 }
 
 $main_html = str_replace("<!-- content -->", $page_content, $main_html);
