@@ -67,7 +67,7 @@
 			<br />
 		</div>
 
-		<div id="formViewData" class="div_wrap2">
+		<div id="formViewData" class="div_wrap2" style="min-height: 450px;">
 
 			<div id="rqData">
 				Office: 		<input type="text" name="initiatingOffice" value="" />
@@ -88,7 +88,9 @@
 				PO Amount: 	   $<input type="text" name="poAmount" value="" size=12 />
 			</div>
 
-			<table id = "items_table" class="level2table">
+			<hr />
+
+			<table id = "items_table" class="level3table">
 				<tr>
 					<th> Id </th>
 					<th> Org </th>
@@ -96,25 +98,25 @@
 					<th> Task </th>
 					<th> Opt </th>
 					<th> SAcc </th>
-					<th> Qty </th>
+					<th style="text-align: right;"> Qty </th>
 					<th> Unit </th>
-					<th> Price </th>
-					<th> Extended</th>
+					<th style="text-align: right;"> Price </th>
+					<th style="text-align: right;"> Extended</th>
 					<th> Description </th>
 					<th style="width: 20px;"> del </th>
 				</tr>
 				<tr>
-					<td style = "width: 15px;"> <input class = "small" disabled type="text" name="requisitionItemId" value=""> </td>
-					<td style = "width: 25px;"> <input class = "small" type="text" name="org" value=""> </td>
-					<td style = "width: 35px;"> <input class = "small" type="text" name="costCenter" value=""> </td>
-					<td style = "width: 35px;"> <input class = "small" type="text" name="task" value=""> </td>
-					<td style = "width: 35px;"> <input class = "small" type="text" name="opt" value=""> </td>
-					<td style = "width: 35px;"> <input class = "small" type="text" name="acc" value=""> </td>
-					<td style = "width: 35px;"> <input class = "small" type="text" name="quantity" value=""> </td>
-					<td style = "width: 35px;"> <input class = "small" type="text" name="unit" value=""> </td>
-					<td style = "width: 45px;"> <input class = "medium" type="text" name="price" value=""> </td>
-					<td style = "width: 45px;"> <input class = "medium" disabled type="text" name="extended" value=""> </td>
-					<td> <input class = "big" type="text" name="description" value=""> </td>
+					<td> <input style="width: 30px;" readonly type="text" name="requisitionItemId" value=""> </td>
+					<td> <input style="width: 35px;" type="text" name="org" value=""> </td>
+					<td> <input style="width: 55px;" type="text" name="costCenter" value=""> </td>
+					<td> <input style="width: 55px;" type="text" name="task" value=""> </td>
+					<td> <input style="width: 55px;" type="text" name="opt" value=""> </td>
+					<td> <input style="width: 35px;" type="text" name="acc" value=""> </td>
+					<td> <input style="width: 90px; text-align: right;" type="text" name="quantity" value=""> </td>
+					<td> <input style="width: 70px;" type="text" name="unit" value=""> </td>
+					<td> <input style="width: 90px; text-align: right;" type="text" name="price" value=""> </td>
+					<td> <input style="width: 90px; text-align: right;" readonly type="text" name="extended" value=""> </td>
+					<td> <input style="width: 300px;" type="text" name="description" value=""> </td>
 					<td> <input type="checkbox" name="del" value=0> </td>
 				</tr>
 			</table>
