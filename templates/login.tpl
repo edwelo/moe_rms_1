@@ -3,9 +3,10 @@
 
 	<br /><br />
 
-	<h1>Login</h1>
-
 	<form id = "login_page" style="text-align: center;" action="" method=post>
+
+		<h1>Login</h1>
+
 		User Name:<br />
 		<input type=text name=username />
 		<br /><br />

@@ -1,14 +1,16 @@
 <!-- list section -->
-<div id="listView" style="float: left; width: 920px;">
+<div id="listView" style="margin: 1em; padding: 1em; border: 1px solid red;">
 
-	<div id="listViewHeader" class="level2header">
-		<button class="newButton" onclick="setvId('new')">New Vendor</button>
+	<div id="listViewHeader" style="margin: 1em; padding: 1em; border: 1px solid green;">
+		<div class="align-right">
+			<button class = "level1button" onclick="setvId('new')">New Vendor</button>
+		</div>
 		List of Vendors.
 		<span style="color: grey;">Click on a row to edit.</span> <br><br>
 	</div>
 
-	<div id="listViewTable">
-		<table id="listTable" class="level1table">
+	<div id="listViewTable" style="margin: 1em; padding: 1em; border: 1px solid green;">
+		<table id="listTable">
 			<thead>
 				<tr>
 					<th>
@@ -55,9 +57,10 @@
 		</table>
 	</div>
 
+
 </div>
 
-<div id="formView" style="float: left; margin: 1em; padding: 1em; border: 1px solid red;">
+<div id="formView" style="margin: 1em; padding: 1em; border: 1px solid red;">
 
 	<div id="formViewHeader" style="margin: 1em; padding: 1em; border: 1px solid green;">
 		Form View Header
@@ -87,5 +90,3 @@
 	</div>
 
 </div>
-
-<div style="clear: both;"></div>

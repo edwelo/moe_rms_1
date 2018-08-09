@@ -85,11 +85,13 @@ if($_POST["log_action"] == "login") {
 			//Additional content for the other pages are parts of sub modules.
 			//$_GET["t1"] identifies the sub module.
 			//We check for sub module, and alert if there isn't any
+			unset($t1);
 			if(trim($_GET["t1"])) {
 				$tmp = strtolower(str_replace(" ", "", trim($_GET["t1"])));
 				$tmp = str_replace(".tpl", "_${tmp}.tpl", $tplFilePath);
 				//check for tpl file
 				if(is_file($tmp)) {
+					$t1 = strtolower(str_replace(" ", "", trim($_GET["t1"])));
 					$additionalContent = file_get_contents($tmp);
 				} else {
 					//by default, we assume the module is missing
@@ -133,6 +135,12 @@ $main_html = str_replace("{page_name}", $page_name, $main_html);
 $main_html = str_replace("{pn}", strtolower($page_name), $main_html);
 $main_html = str_replace("{page_name_selector}", $page_name_selector, $main_html);
 $main_html = str_replace("{jsForceLoad}", rand(0, 50), $main_html);
+
+if($t1 && $page_name == "Utilities") {
+	$main_html = str_replace("{js}", $page_name . "_" . $t1, $main_html);
+} else {
+	$main_html = str_replace("{js}", strtolower($page_name), $main_html);
+}
 
 print $main_html;
 

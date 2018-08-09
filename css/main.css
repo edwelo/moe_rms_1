@@ -68,6 +68,18 @@ body {
 	cursor: pointer;
 }
 
+.level2header { font-size: large; }
+.level2header .newButton {
+	float: right;
+    box-shadow: inset 0px 1px 0px 0px #3985B1;
+    background-color: #2D77A2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 6px 10px;
+}
+
+
 #login span {
     font-size: 12px;
 }
