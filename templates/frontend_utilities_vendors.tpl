@@ -1,8 +1,44 @@
-<!-- list section -->
-<div id="listView" style="float: left; width: 920px;">
+<div id="formView" style="float: left; width: 100%;">
+
+	<div id="formViewHeader" class="level2Header">
+		<button class="button" style="float: right;" onclick="main('save')">Save</button>
+		<button class="button" style="float: left;" onclick="setId(0)">Back to List</button>
+		Enter/Edit This Vendor.
+	</div>
+
+	<div id="formViewData" class="div_wrap2">
+
+		<span class=lbl1>Id: </span>
+			<span id="rqId" style="font-size: x-large; font-weight: bold;"></span>
+			<input hidden name="vendorId" value="new" size=10 />
+		<br /><br />
+		
+		<span class=lbl1>Name: </span><input name="vendorName" value="" size=50 />
+		<br />
+
+		<span class=lbl1>Addr1/2: </span><input name="address1" value="" size=30 />
+			<input name="address2" value="" size=30 />
+		<br />
+
+		<span class=lbl1>City/State/Zip: </span><input name="city" value="" size=10 />
+			<input name="state" value="" size=10 />
+			<input name="zip" value="" size=10 />
+		<br />
+
+		<span class=lbl1>Tel/Fax: </span><input name="phone" value="" size=20 />
+			<input name="fax" value="" size=20 />
+		<br />
+
+		<span class=lbl1>Email/Web: </span><input name="email" value="" size=30 />
+			<input name="website" value="" size=30 />
+	</div>
+
+</div>
+
+<div id="listView" style="float: left; width: 100%;">
 
 	<div id="listViewHeader" class="level2header">
-		<button class="newButton" onclick="setvId('new')">New Vendor</button>
+		<button class="button" style="float: right;" onclick="setId('new')">New Vendor</button>
 		List of Vendors.
 		<span style="color: grey;">Click on a row to edit.</span> <br><br>
 	</div>
@@ -56,37 +92,6 @@
 
 			</tbody>
 		</table>
-	</div>
-
-</div>
-
-<div id="formView" style="float: left; margin: 1em; padding: 1em; border: 1px solid red;">
-
-	<div id="formViewHeader" style="margin: 1em; padding: 1em; border: 1px solid green;">
-		Form View Header
-	</div>
-
-	<div id="formViewData" style="margin: 1em; padding: 1em; border: 1px solid green;">
-
-		<span class=lbl1>Id: </span><input name="vendorId" value="" size=10 />
-		<span class=lbl1>Name: </span><input name="vendorName" value="" size=50 />
-		<br />
-
-		<span class=lbl1>Addr1/2: </span><input name="address1" value="" size=30 />
-			<input name="address2" value="" size=30 />
-		<br />
-
-		<span class=lbl1>City/State/Zip: </span><input name="city" value="" size=10 />
-			<input name="state" value="" size=10 />
-			<input name="zip" value="" size=10 />
-		&nbsp;&nbsp;&nbsp;
-
-		<span class=lbl1>Tel/Fax: </span><input name="telephone" value="" size=12 />
-			<input name="facsimile" value="" size=12 />
-		<br />
-
-		<span class=lbl1>Email/Web: </span><input name="email" value="" size=30 />
-			<input name="website" value="" size=30 />
 	</div>
 
 </div>

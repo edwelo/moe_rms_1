@@ -1,6 +1,6 @@
 <?php
 
-if($_GET["a"]) {
+if($local) {
 	echo "
 <span style='font-weight: bold;'>" . $_GET["t1"] . "</span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -21,11 +21,16 @@ if($_SERVER["REMOTE_ADDRESS"] == "127.0.0.1" || $_SERVER["REMOTE_ADDRESS"] == ":
 }
 $db = new mysqli($db_host, $db_user, $db_pass);
 
-if(isset($_GET["save"])) {
-	require_once("includes/" . strtolower($page_name) . "_save.inc");
-}
+if($_GET["t1"]) {
 
-require_once("includes/" . strtolower($page_name) . "_read.inc");
+	$t1 = strtolower(str_replace(" ", "", trim($_GET["t1"])));
+	$file = "includes/" . strtolower($page_name) . "_" . $t1 . ".inc";
+	
+	if(is_file($file)) {
+		require_once($file);
+	}	
+	
+}
 
 $db->close;
 

@@ -17,7 +17,7 @@
 	if(!isset($rqArr)) $rqArr = new stdClass();
 	$rqArr = json_decode($json);
 
-	if($_GET["a"]) {
+	if($local) {
 		echo "<p>JSON:<br /><span style='font-size: small;'>${json}</span></p>";
 		if(is_object($rqArr)) {
 			echo "<p>rqID: " . $_GET["requisitionId"] . " :: " . $rqArr->requisitionId . " :: " . $rqId . "</p>";
@@ -104,7 +104,7 @@
 		$preppedItems[] = $tmp;
 	}
 
-	if($_GET["a"]) { echo "<pre>"; print_r($preppedItems); echo "</pre>"; }
+	if($local) { echo "<pre>"; print_r($preppedItems); echo "</pre>"; }
 
 	//save the rq
 
@@ -130,7 +130,7 @@
 
 	//save requisition items
 
-	if($_GET["a"]) echo "<br />RQ Items SQLs:<br /><br />\n";
+	if($local) echo "<br />RQ Items SQLs:<br /><br />\n";
 
 	foreach($preppedItems as $i=>$row) {
 		$itemId = $tmp1[$i];
@@ -159,7 +159,7 @@
 
 		}
 
-		if($_GET["a"]) echo "<span style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</span><br /><br />\n";
+		if($local) echo "<span style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</span><br /><br />\n";
 
 		$db->query($sql) or die("RQ_Item_Save_Error: " . $db->error . "<br />\n<code>${sql}</code>\n");
 	}

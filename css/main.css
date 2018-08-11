@@ -68,8 +68,8 @@ body {
 	cursor: pointer;
 }
 
-.level2header { font-size: large; }
-.level2header .newButton {
+.level2header { font-size: large; margin-bottom: 2em; }
+.level2header .button {
 	float: right;
     box-shadow: inset 0px 1px 0px 0px #3985B1;
     background-color: #2D77A2;
