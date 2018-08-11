@@ -15,39 +15,42 @@
 						<data value="vendorId">Id</data>
 					</th>
 					<th>
-						<data value="vendorName">Name</data>
-					</th>
-					<th>
-						<data value="address1">Address1 </data>
-						<data value="address2">, </data>
+						<data value="vendorName">Vendor Name / </data>
 						<data value="city">City, </data>
 						<data value="state">State </data>
 						<data value="zip">Zip</data>
 					</th>
 					<th>
+						<data value="address1">Address</data>
+						<data value="address2"></data>
+					</th>
+					<th style="width: 120px;">
 						Contact:
-						<data value="telephone"> Tel </data>
-						<data value="facsimile">Fax </data>
+						<data value="phone"> Tel / </data>
+						<data value="fax">Fax</data>
+						<!--
 						<data value="email">Email </data>
 						<data value="website">Web</data>
+						-->
 					</th>
 				</tr>
 			</thead>
 			<tbody>
-			<tr>
+			<tr style="vertical-align: top;">
 				<td>
 					<span></span>
 				</td>
 				<td>
-					<span></span>
-				</td>
-				<td>
-					<span></span> <span></span><br />
+					<span></span><br />
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<span></span>, <span></span> <span></span>
 				</td>
 				<td>
-					<span></span>, <span></span><br />
-					<span></span>, <span></span>
+					<span></span><br /><span></span>
+				</td>
+				<td>
+					<span></span><br /><span></span>
+					<!-- <span></span>, <span></span> -->
 				</td>
 			</tr>
 

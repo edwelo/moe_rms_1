@@ -97,7 +97,7 @@ if($_POST["log_action"] == "login") {
 					//by default, we assume the module is missing
 					$additionalContent = "<h1>Missing Sub MOdule</h1>";
 					//check for md file and override missing alert
-					$tmp = str_replace(".tpl", ".md", $tplFilePath);
+					$tmp = str_replace(".tpl", ".md", $tmp);
 					if(is_file($tmp)) {
 						$pd = new Parsedown();
 						$additionalContent = $pd->text(file_get_contents($tmp));
