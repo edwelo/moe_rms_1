@@ -10,43 +10,47 @@
 		</div>
 
 		<div id="listViewDetail">
-			<table id="rqListTable" class="level1table">
+			<table id="rqListTable" class="level1table" style="width: 100%;">
 				<caption>
 					requisitionId,initiatingOffice,requestedBy,preparedByName,preparedDate,vendorName,numItems,rqAmount,justification,poNo,poDate
 				</caption>
-				<tr>
-					<th>Id</th>
-					<th>Office<br />Requested By</th>
-					<th>Prepared By<br />PrepDate</th>
-					<th>Vendor / Amount / numItems</th>
-					<th>Justification</th>
-					<th>PO No/Date</th>
-				</tr>
-				<tr>
-					<td>
-						<span></span>
-					</td>
-					<td>
-						<span></span><br />
-						<span></span>
-					</td>
-					<td>
-						<span></span><br />
-						<span></span>
-					</td>
-					<td>
-						<span></span><br />
-						<span></span><br />
-						<span></span>
-					</td>
-					<td>
-						<span></span>
-					</td>
-					<td>
-						<span></span><br />
-						<span></span>
-					</td>
-				</tr>
+				<thead>
+					<tr>
+						<th style="width: 30px;">Id</th>
+						<th style="width: 100px;">Office<br />Requested By</th>
+						<th style="width: 100px;">Prepared By<br />PrepDate</th>
+						<th style="width: 100px;">Vendor / Amount / numItems</th>
+						<th style="width: 515px;">Justification</th>
+						<th style="width: 80px;">PO No/Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 30px;">
+							<span></span>
+						</td>
+						<td style="width: 100px;">
+							<span></span><br />
+							<span></span>
+						</td>
+						<td style="width: 100px;">
+							<span></span><br />
+							<span></span>
+						</td>
+						<td style="width: 100px;">
+							<span></span><br />
+							<span></span><br />
+							<span></span>
+						</td>
+						<td style="width: 515px;">
+							<span></span>
+						</td>
+						<td style="width: 80px;">
+							<span></span><br />
+							<span></span>
+						</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>

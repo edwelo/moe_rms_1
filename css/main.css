@@ -6,7 +6,7 @@ body {
 }
 
 #site_wrap {
-	width: 1200px;
+	width: 1024px;
 	margin: auto;
 }
 
@@ -109,7 +109,7 @@ body {
 	background-color: #ccc;
 }
 
-/*Tables*/
+/* Level 1 Table */
 
 .level1table {
     margin: 10px auto;
@@ -127,24 +127,43 @@ body {
 	display: none;
 }
 
-.level1table td, th {
+.level1table thead tr {
+	display: block;
+	width: 100%;
+    vertical-align: bottom;
+}
+.level1table thead th {
     border: 1px solid #4f7a93;
     padding: 4px;
-    text-align: left;
-    vertical-align: middle;
-}
-.level1table th {
     background-color: #4f7a93;
     color: white;
     font-weight: normal;
+    text-align: left;
 }
 
-.level1table tr {
+.level1table tbody {
+	display: block;
+	overflow: auto;
+	height: 550px;
+	width: 100%;
+}
+.level1table tbody tr {
+    vertical-align: top;
     cursor: pointer;
 }
-.level1table tr:nth-child(even) {
+.level1table tbody tr:hover {
+	background-color: #ddd;
+}
+.level1table tbody tr:nth-child(even) {
 	background-color: #f2f2f2;
 }
+.level1table tbody td {
+    border: 1px solid #4f7a93;
+    padding: 4px;
+    text-align: left;
+}
+
+/* Level 2 Table */
 
 .level2table {
 	width: 100%;
@@ -167,7 +186,7 @@ body {
     background-color: #fff;
 }
 
-.level1table tr:hover, .level2table tr:hover {
+.level2table tr:hover {
 	background-color: #ddd;
 }
 .level2table th {

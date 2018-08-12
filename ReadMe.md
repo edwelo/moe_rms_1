@@ -6,6 +6,14 @@ Analysis of the process reveals four distinct major steps: Requisitioning, Recei
 
 The MOE's expectation its process improvements is to eventually be able to implement all the pieces of an IPOLO design. The 10 week duration of the project prevented the inclusion of a logical fifth major step, Reporting.
 
+## 2018-08-10
+
+### End of the Project ###
+
+The project term ends today. The project started with a the goal of creating basic functionality of requisitioning, receiving, and distribution. If progress was faster than we expected, we hoped to add an inventory module.
+
+We had to take two weeks out to look at the BCI's TES app. But the goal was met and a working app is now on the MOE servers ready to be used by appropriate MOE staff.
+
 ## 2018-07-31
 
 ### Need Changes - Presentation.

@@ -11,7 +11,7 @@ if($_GET["t1"] == "Vendors") {
 		$json = file_get_contents('php://input');
 	
 		if(!$json) {
-			$json = '{"saveVendor":{"vendorId":"12","vendorName":"Mason\'s Hardware Do-It Center","address1":"P.O. Box 295","address2":"","city":"Koror","state":"Palau","zip":"96940","phone":"(680) 488-3660","fax":"(680) 488-5353","email":"","website":""}}';
+			$json = '{"saveVendor":{"vendorId":"new","vendorName":"Mason\'s Hardware Do-It Center","address1":"P.O. Box 295 xxx","address2":"","city":"Koror","state":"Palau","zip":"96940","phone":"(680) 488-3660","fax":"(680) 488-5353","email":"","website":""}}';
 		}
 	
 		if(!$json) {
@@ -53,6 +53,12 @@ if($_GET["t1"] == "Vendors") {
 		}
 
 		$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+
+		$rs = $db->query($sql) or die("SAVE_VENDOR: " . $db->error . $sqlHTML);
+
+		if($vId == "new") {
+			$vId = $db->insert_id;
+		}
 	
 	}
 
