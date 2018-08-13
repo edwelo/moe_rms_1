@@ -9,29 +9,32 @@ if(!$_SERVER["HTTP_REFERER"] || substr(basename($_SERVER["HTTP_REFERER"]), 0, 7)
 	$local = true;
 }
 
+$pages = array("Requisitioning", "Receiving", "Distribution", "Inventory", "Utilities");
+if(!in_array($_GET["pn"], $pages)) {
+	header("location: backend.php?pn=Requisitioning");
+}
+
 $page_name = $_GET["pn"];
 
-$html = "
-<h3>Welcome to the MOE Expenditure Tracker App Backend</h3>
+unset($rqId);
+if($_GET["requisitionId"] && ($_GET["requisitionId"] == "new" || is_numeric($_GET["requisitionId"]))) {
+	$rqId = $_GET["requisitionId"];
+}
 
-<p>
-<span style='color: grey;'>Look at other modules:</span>&nbsp;&nbsp;
-[ <a href=\"?pn=Requisitioning\">Requisitioning</a> ]
-[ <a href=\"?pn=Receiving\">Receiving</a> ]
-[ <a href=\"?pn=Distribution\">Distribution</a> ]
-[ <a href=\"?pn=Inventory\">Inventory</a> ]
-</p>
-
-<p>
-<span style='color: grey;'>Utilities:</span>&nbsp;&nbsp;
-[ <a href=\"?pn=Utilities&t1=Vendors\">Vendors</a> ]
-[ <a href=\"?pn=Utilities&t1=Orgs\">Orgs</a> ]
-[ <a href=\"?pn=Utilities&t1=Tasks\">Tasks</a> ]
-[ <a href=\"?pn=Utilities&t1=Cost Centers\">Cost Centers</a> ]
-</p>
-";
-
-if($local) echo $html;
+if($local) {
+	$html = file_get_contents("html/backend_local.tpl");
+	
+	$search = "value=\"" . $page_name . "\"";
+	$html = str_replace($search, $search . " checked", $html);
+	
+	$html = str_replace("{rqId}", "${rqId}", $html);
+	if($rqId) {
+		$html = str_replace("{heading}", "${page_name} Form Data, rqId #${rqId}", $html);
+	} else {
+		$html = str_replace("{heading}", "${page_name} List Data", $html);
+	}
+	print $html;
+}
 
 if(!$page_name) { exit; }
 
