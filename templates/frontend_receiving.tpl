@@ -1,83 +1,89 @@
 	<!-- requisition list section -->
 	<div id="listView" class="div_wrap" style="display: none;">
 
-		List of Purchase Orders.
-		<span style="color: grey;">Click on a row to edit.</span> <br><br>
+		<div id="listViewHeader">
+			List of Purchase Orders.
+			<span style="color: grey;">Click on a row to edit.</span> <br><br>
+		</div>
 
-		<table id="rqListTable" class="level1table">
-			<!-- Field names in the caption element. These match data source field names.
-				Must be one contiguous line, no spaces after or before commas.
-				Must have 1 to 1 correspondence with the th's below. To change the
-				items in the rq list, change the field names and the corresponding th's. -->
-			<caption>
-				requisitionId,poNo,poType,poDate,poAmount,vendorName,numItems,justification,rcvActivityCount,rcvActivityAmount,distribActivityCount,distribActivityAmount,statusDate,status
-			</caption>
-			<tr>
-				<th>Id</th>
-				<th>PO No/Type<br />/Date/Amount</th>
-				<th>Vendor / numItems</th>
-				<th>Justification</th>
-				<th>Rcv Activity</th>
-				<th>Distr Activity</th>
-				<th>Status</th>
-			</tr>
-			<tr style="vertical-align: top; cursor: pointer;">
-				<td>
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span><br />
-					<span></span><br />
-					$<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span>
-				</td>
-				<td>
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					<span></span>
-				</td>
-			</tr>
-		</table>
+		<div id="listViewDetail">
+			<table id="rqListTable" class="level1table" style="width: 100%;">
+				<!-- Field names in the caption element. These match data source field names.
+					Must be one contiguous line, no spaces after or before commas.
+					Must have 1 to 1 correspondence with the th's below. To change the
+					items in the rq list, change the field names and the corresponding th's. -->
+				<caption>
+					requisitionId,poNo,poType,poDate,poAmount,vendorName,numItems,justification,rcvActivityCount,rcvActivityAmount,distribActivityCount,distribActivityAmount,statusDate,status
+				</caption>
+				<thead>
+					<tr>
+						<th style="width: 30px;">Id</th>
+						<th style="width: 80px;">PO Info</th>
+						<th style="width: 100px;">Vendor/Items</th>
+						<th style="width: 410px;">Justification</th>
+						<th style="width: 100px;">Rcv Activity</th>
+						<th style="width: 100px;">Distr Activity</th>
+						<th style="width: 80px;">Status</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 30px;">
+							<span></span>
+						</td>
+						<td style="width: 80px;">
+							<span></span><br />
+							<span></span><br />
+							<span></span><br />
+							$<span></span>
+						</td>
+						<td style="width: 100px;">
+							<span></span><br />
+							<span></span> items
+						</td>
+						<td style="width: 410px;">
+							<span></span>
+						</td>
+						<td style="width: 100px;">
+							<span></span> rcvs<br />
+							<span></span>
+						</td>
+						<td style="width: 100px;">
+							<span></span> dists<br />
+							<span></span>
+						</td>
+						<td style="width: 80px;">
+							<span></span><br />
+							<span></span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
 
 	<div id="formView" class="div_wrap" style="display: none;">
 
 		<div id="formViewHeader">
-			<div class="header-right">
-				<button class = "level1button" id="btnRcvAction">&nbsp;&nbsp;</button>
-			</div>
-			<div class="header-left">
-				<button class = "level1button" onclick="setRQId(0)">Back to List</button>
-			</div>
+			<button id="btnRcvAction" class="level1button" style="float: right;">&nbsp;&nbsp;</button>
+			<button class="level1button" style="float: left;" onclick="setId(0)">Back to List</button>
 			<h2>Requisition ID <span id="rqId" style="font-weight: bold;"></span></h2>
 			<div style="clear: both;"></div>
-			<br />
 		</div>
 
 		<div id="rqData">
-			PO Info: 		<data value="poNo"></data>&nbsp;&nbsp;
-							<data value="poDate"></data>&nbsp;&nbsp;
-							$<data value="poAmount"></data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			Office Info:	<data value="initiatingOffice"></data>&nbsp;&nbsp;
-							<data value="requestedBy"></data><br />
-			Vendor info:	<data value="vendorId"></data>&nbsp;
-							<data value="vendorName"></data><br />
-			Justification:	<br />
-							<data value="justification"></data><br />
+			<span class="lbl1">PO Info:</span>
+				<data value="poNo"></data>&nbsp;&nbsp;
+				<data value="poDate"></data>&nbsp;&nbsp;
+				$<data value="poAmount"></data>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span class="lbl1">Office Info:</span>
+				<data value="initiatingOffice"></data>&nbsp;&nbsp;
+				<data value="requestedBy"></data><br />
+			<span class="lbl1">Vendor info:</span>
+				<data value="vendorId"></data>&nbsp;
+				<data value="vendorName"></data><br />
+			<span class="lbl1">Justification:</span><br />
+				<data value="justification"></data><br />
 		</div>
 
 		<div id="rcvList">
@@ -86,30 +92,34 @@
 
 			List of Receivings
 			<table id = "rcvListTable" class="level2table">
-				<tr>
-					<th> Id </th>
-					<th> RcvBy </th>
-					<th> RcvDate </th>
-					<th> Purpose </th>
-					<th> InvNo </th>
-					<th> InvDate </th>
-					<th> InvAmount </th>
-					<th> Status</th>
-					<th> StatusDate </th>
-				</tr>
-				<tr style="vertical-align: top; cursor: pointer;">
-					<td> <input type="hidden" name="requisitionItemId" value="" />
-						<data value="receivingId"></data>
-						</td>
-					<td> <data value="rcvBy"> </td>
-					<td> <data value="rcvDate"></data></td>
-					<td> <data value="justification"></data></td>
-					<td> <data value="invoiceNo"></data></td>
-					<td> <data value="invoiceDate"></data></td>
-					<td> <data value="invoiceAmount"></data></td>
-					<td> <data value="status"></data></td>
-					<td> <data value="statusDate"></data></td>
-				</tr>
+				<thead>
+					<tr>
+						<th> Id </th>
+						<th> RcvBy </th>
+						<th> RcvDate </th>
+						<th> Purpose </th>
+						<th> InvNo </th>
+						<th> InvDate </th>
+						<th> InvAmount </th>
+						<th> Status</th>
+						<th> StatusDate </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="vertical-align: top; cursor: pointer;">
+						<td> <input type="hidden" name="requisitionItemId" value="" />
+							<data value="receivingId"></data>
+							</td>
+						<td> <data value="rcvBy"> </td>
+						<td> <data value="rcvDate"></data></td>
+						<td> <data value="justification"></data></td>
+						<td> <data value="invoiceNo"></data></td>
+						<td> <data value="invoiceDate"></data></td>
+						<td> <data value="invoiceAmount"></data></td>
+						<td> <data value="status"></data></td>
+						<td> <data value="statusDate"></data></td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 
@@ -149,6 +159,7 @@
 
 				Remarks:	<input type="text" name="remarks" value="" size=120 />
 
+							<input type="hidden" name="uaserId" value="{uidnumber}" />
 			</div>
 			
 			<hr />

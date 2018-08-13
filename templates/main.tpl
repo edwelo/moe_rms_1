@@ -1,4 +1,4 @@
-<html>
+<html style="background-color: #aaa;">
 <head>
 	<title> MOE Expenditure Tracker </title>
 
@@ -26,16 +26,17 @@
 <div id="site_wrap">
 
 	<div class="header">
-	  <div class="header-left"><a href="#"> MOE Forms </a></div>
-	  <div class="header-right">
-		{page_name_selector}
-		<form id = "login" name="login" action="" method=post><a>
-			<span onclick="document.login.submit()">{log_action}</span>
+		<form id="login" name="login" action="" method=post><a>
+			<span class="logaction" onclick="document.login.submit()">{log_action}</span>
+			<br />
 			<span id="user">{cn}</span>
 			<span id="userId" style="display: none;">{uidnumber}</span>
 			<input type=hidden name=log_action value="{log_action}" />
 		</a></form>
-	  </div>
+		<div class="header-right">
+			{page_name_selector}
+		</div>
+		<div class="header-left"><a href="#"> MOE Forms </a></div>
 	</div>
 
 	<!-- content -->

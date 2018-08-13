@@ -16,7 +16,7 @@ if(in_array($_POST["username"] . $_POST["password"], $nonLDAPusers)) {
 	if($_POST["username"] == "Edwel") {
 		$_SESSION["uid"]="edwel";
 		$_SESSION["cn"]="Edwel Ongrung";
-		$_SESSION["uidnumber"]=2071;
+		$_SESSION["uidnumber"]=71;
 	}
 } else {
 
