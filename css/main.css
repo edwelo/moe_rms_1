@@ -318,19 +318,19 @@ input[type="checkbox"] {
     padding: 10px;
 }
 
-.sidebar_right_40, .sidebar_right_30, .sidebar_right_20 {
-	min-height: 600px;
-	float: right; padding: 1em; margin-left: 2em;
+.sidebar_right_40, .sidebar_right_30, .sidebar_right_20 .sidebar_right_15 {
+	float: right; padding: 1em; margin-left: 1em;
+	overflow-y: scroll;
 	border-top-right-radius: 6px;
 	border-bottom-right-radius: 6px;
 	background-color: #ddd;
 }
+.sidebar_right_15 { width: 15%; }
 .sidebar_right_20 { width: 20%; }
 .sidebar_right_30 { width: 30%; }
 .sidebar_right_40 { width: 40%; }
 
 .sidebar_left_40, .sidebar_left_30, .sidebar_left_20, .sidebar_left_15 {
-	min-height: 600px;
 	float: left; padding: 1em; margin-right: 2em;
 	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px;
