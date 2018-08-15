@@ -32,17 +32,17 @@
 *Koror*: Koror Elementary School  
 *PHS*: Palau High School  
 *Meyuns*: Meyuns Elementary School  
-*Peleliu*: Peleliu Elementary School
-*Angaur*: Angaur Elementary School
-*Sonsorol*: Sonsorol Elementary School
-*Puloana*: Pulo Ana Elementary School
-*Tobi*: Tobi Elementary School
+*Peleliu*: Peleliu Elementary School  
+*Angaur*: Angaur Elementary School  
+*Sonsorol*: Sonsorol Elementary School  
+*Puloana*: Pulo Ana Elementary School  
+*Tobi*: Tobi Elementary School  
 
 ###Others###
-*SpEd*: Special Education Office
-*AdultEd*: Adult Education Program
-*PubLib*: Public Library
-*PCC*: Palau Community College
+*SpEd*: Special Education Office  
+*AdultEd*: Adult Education Program  
+*PubLib*: Public Library  
+*PCC*: Palau Community College  
 
 ###Support Services###
 *Food*: Food Services  

@@ -134,10 +134,10 @@ if($_SESSION["uid"]) {
 $main_html = str_replace("{page_name}", $page_name, $main_html);
 $main_html = str_replace("{pn}", strtolower($page_name), $main_html);
 $main_html = str_replace("{page_name_selector}", $page_name_selector, $main_html);
-$main_html = str_replace("{jsForceLoad}", rand(0, 50), $main_html);
+#$main_html = str_replace("{jsForceLoad}", rand(0, 50), $main_html);
 
 if($t1 && $page_name == "Utilities") {
-	$main_html = str_replace("{js}", $page_name . "_" . $t1, $main_html);
+	$main_html = str_replace("{js}", strtolower($page_name . "_" . $t1), $main_html);
 } else {
 	$main_html = str_replace("{js}", strtolower($page_name), $main_html);
 }

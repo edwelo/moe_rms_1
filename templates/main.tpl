@@ -3,7 +3,7 @@
 	<title> MOE Expenditure Tracker </title>
 
     <link rel="stylesheet" type="text/css" href="css/main.css">
-    <script src="js/frontend_{js}.js?{jsForceLoad}"></script>
+    <script src="js/frontend_{js}.js"></script>
     <script src="js/frontend_main.js"></script>
 
 	<script type="text/javascript">
