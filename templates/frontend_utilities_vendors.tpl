@@ -12,7 +12,7 @@
 			<span id="rqId" style="font-size: x-large; font-weight: bold;"></span>
 			<input hidden name="vendorId" value="new" size=10 />
 		<br /><br />
-		
+
 		<span class=lbl1>Name: </span><input name="vendorName" value="" size=50 />
 		<br />
 
@@ -37,26 +37,26 @@
 
 <div id="listView" style="float: left; width: 100%;">
 
-	<div id="listViewHeader" class="level2header">
-		<button class="button" style="float: right;" onclick="setId('new')">New Vendor</button>
+	<div id="listViewHeader" class="level2header" style="margin: 0; padding: 0;">
+		<button class="level2button" style="float: right;" onclick="setId('new')">New Vendor</button>
 		List of Vendors.
-		<span style="color: grey;">Click on a row to edit.</span> <br><br>
+		<span style="color: grey;">Click on a row to edit.</span>
 	</div>
 
-	<div id="listViewTable">
+	<div id="listViewTable" style="margin: 0; padding: 0;">
 		<table id="listTable" class="level1table">
 			<thead>
 				<tr>
-					<th>
+					<th style="width: 35px;">
 						<data value="vendorId">Id</data>
 					</th>
-					<th>
+					<th style="width: 300px;">
 						<data value="vendorName">Vendor Name / </data>
 						<data value="city">City, </data>
 						<data value="state">State </data>
 						<data value="zip">Zip</data>
 					</th>
-					<th>
+					<th style="width: 300px;">
 						<data value="address1">Address</data>
 						<data value="address2"></data>
 					</th>
@@ -72,24 +72,23 @@
 				</tr>
 			</thead>
 			<tbody>
-			<tr style="vertical-align: top;">
-				<td>
-					<span></span>
-				</td>
-				<td>
-					<span></span><br />
-					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<span></span>, <span></span> <span></span>
-				</td>
-				<td>
-					<span></span><br /><span></span>
-				</td>
-				<td>
-					<span></span><br /><span></span>
-					<!-- <span></span>, <span></span> -->
-				</td>
-			</tr>
-
+				<tr style="vertical-align: top;">
+					<td style="width: 35px;">
+						<span></span>
+					</td>
+					<td style="width: 300px;">
+						<span></span><br />
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span></span>, <span></span> <span></span>
+					</td>
+					<td style="width: 300px;">
+						<span></span><br /><span></span>
+					</td>
+					<td style="width: 120px;">
+						<span></span><br /><span></span>
+						<!-- <span></span>, <span></span> -->
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>

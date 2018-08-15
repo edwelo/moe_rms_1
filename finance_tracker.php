@@ -100,7 +100,7 @@ if($_POST["log_action"] == "login") {
 					$tmp = str_replace(".tpl", ".md", $tmp);
 					if(is_file($tmp)) {
 						$pd = new Parsedown();
-						$additionalContent = $pd->text(file_get_contents($tmp));
+						$additionalContent = "<div style='height: 570px; overflow-y: scroll;'>" . $pd->text(file_get_contents($tmp)) . "</div>\n";
 					}
 				}
 				//insert the additional content

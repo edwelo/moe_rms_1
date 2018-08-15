@@ -216,7 +216,7 @@ if($rqId && is_numeric($rqId)) {
 		$result1[$tmp["requisitionId"]]["distribActivityAmount"] = $tmp["amount"];
 	}
 
-	foreach($result1 as $row) { $data["rqlist"][] = $row; }
+	if(is_array($result1)) foreach($result1 as $row) { $data["rqlist"][] = $row; }
 
 }
 

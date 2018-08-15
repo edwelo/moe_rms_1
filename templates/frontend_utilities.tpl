@@ -4,7 +4,7 @@
 		{sidebar}
 	</div>
 
-	<div style="float: left; width: 80%;">
+	<div style="float: left; width: 78%; height: 550px; padding: 0; mnargin: 0;">
 		{content}
 	</div>
 

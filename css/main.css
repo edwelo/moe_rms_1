@@ -110,7 +110,7 @@ body {
 	cursor: pointer;
 }
 
-.level2header { font-size: large; margin-bottom: 2em; }
+.level2header { font-size: large; }
 .level2header .button {
 	float: right;
     box-shadow: inset 0px 1px 0px 0px #3985B1;
@@ -118,7 +118,7 @@ body {
     color: white;
     border-radius: 5px;
     cursor: pointer;
-    padding: 6px 10px;
+    padding: 3px 5px;
 }
 
 
@@ -331,7 +331,7 @@ input[type="checkbox"] {
 .sidebar_right_40 { width: 40%; }
 
 .sidebar_left_40, .sidebar_left_30, .sidebar_left_20, .sidebar_left_15 {
-	float: left; padding: 1em; margin-right: 2em;
+	float: left; padding: 1em; margin-right: 1em;
 	border-top-left-radius: 6px;
 	border-bottom-left-radius: 6px;
 	background-color: #ddd;

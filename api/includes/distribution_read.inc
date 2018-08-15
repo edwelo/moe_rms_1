@@ -8,15 +8,15 @@ if($rqId && (is_numeric($rqId) || $rqId=="new")) {
 	if($rqId != "new") {
 		$sql = "SELECT
 					a.*, b.*, c.description, e.poNo
-				FROM 
-					$distribTable a, $distribItemsTable b, 
+				FROM
+					$distribTable a, $distribItemsTable b,
 					$rcvItemsTable c, $rcvTable d,
 					$rqTable e
-				WHERE 
-					a.distributionId=b.distributionId AND 
-					b.receivingItemId=c.receivingItemId AND 
-					c.receivingId=d.receivingId AND 
-					d.requisitionId=e.requisitionId AND 
+				WHERE
+					a.distributionId=b.distributionId AND
+					b.receivingItemId=c.receivingItemId AND
+					c.receivingId=d.receivingId AND
+					d.requisitionId=e.requisitionId AND
 					a.distributionId=${rqId}";
 
 		$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
@@ -32,15 +32,15 @@ if($rqId && (is_numeric($rqId) || $rqId=="new")) {
 			}
 		}
 	}
-	
+
 	$sql = "SELECT
 				e.poNo, d.receivingId, c.receivingItemId,
-				c.requisitionItemId, c.description, c.quantity 
-			FROM 
+				c.requisitionItemId, c.description, c.quantity
+			FROM
 				$rcvItemsTable c, $rcvTable d,
 				$rqTable e
-			WHERE 
-				c.receivingId=d.receivingId AND 
+			WHERE
+				c.receivingId=d.receivingId AND
 				d.requisitionId=e.requisitionId
 			ORDER BY
 				e.poNo, c.receivingItemId";
@@ -103,7 +103,7 @@ if($rqId && (is_numeric($rqId) || $rqId=="new")) {
 		$data["rqlist"][$tmp["distributionId"]]["refPOs"] .= $tmp["poNo"] . " ";
 	}
 
-	$data["rqlist"] = array_values($data["rqlist"]);
+	if(is_array($data["rqlist"])) $data["rqlist"] = array_values($data["rqlist"]);
 }
 
 

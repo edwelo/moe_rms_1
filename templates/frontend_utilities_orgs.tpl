@@ -219,7 +219,7 @@
 	</table>
 </div>
 
-<div style="float: left; width: 55%;"">
+<div style="float: left; width: 50%;"">
 	<h3>MOE Orgs - Grant Funds</h3>
 	<table class=level1table>
 		<thead>
