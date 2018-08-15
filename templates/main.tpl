@@ -36,7 +36,7 @@
 		<div class="header-right">
 			{page_name_selector}
 		</div>
-		<div class="header-left"><a href="#"> MOE Forms </a></div>
+		<div class="header-left"><a href="#"> MOE Requisitioning </a></div>
 	</div>
 
 	<!-- content -->
