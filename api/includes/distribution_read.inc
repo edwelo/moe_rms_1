@@ -19,16 +19,16 @@ if($rqId && (is_numeric($rqId) || $rqId=="new")) {
 					d.requisitionId=e.requisitionId AND
 					a.distributionId=${rqId}";
 
-		$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+		if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
 		$rs = $db->query($sql) or die("GET_DISTRIB: " . $db->error . $sqlHTML);
 
 		if(mysqli_num_rows($rs)) {
 			while($tmp = $rs->fetch_assoc()) {
 				if(!isset($data["rq"]["distrib"])) {
-					$data["rq"]["distrib"] = array_slice($tmp, 0, 12);
+					$data["rq"]["distrib"] = array_slice($tmp, 0, 16);
 				}
-				$data["rq"]["distribItems"][] = array_slice($tmp, 12, 9);
+				$data["rq"]["distribItems"][] = array_slice($tmp, 16, 11);
 			}
 		}
 	}
@@ -45,7 +45,7 @@ if($rqId && (is_numeric($rqId) || $rqId=="new")) {
 			ORDER BY
 				e.poNo, c.receivingItemId";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
 	$rs = $db->query($sql) or die("GET_DISTRIB: " . $db->error . $sqlHTML);
 

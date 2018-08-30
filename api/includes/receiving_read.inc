@@ -18,7 +18,7 @@ if($rqId && is_numeric($rqId)) {
 			requisitionId=${rqId}
 		";
 
-	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
 	$rs = $db->query($sql) or die("GET_RQ: " . $db->error . $sqlHTML);
 	$data["rq"] = $rs->fetch_assoc();
@@ -38,7 +38,7 @@ if($rqId && is_numeric($rqId)) {
 				isValid NOT LIKE 'x%'
 			";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
 	$rs = $db->query($sql) or die("GET_RQ_ITEMS: " . $db->error);
 	if(mysqli_num_rows($rs)) {
@@ -60,7 +60,7 @@ if($rqId && is_numeric($rqId)) {
 				requisitionId = ${rqId} AND
 				isValid NOT LIKE 'x%'";
 
-	$sqlHTML = "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
 	$rs = $db->query($sql) or die("GET_RCV: " . $db->error);
 	if(mysqli_num_rows($rs)) {
@@ -86,7 +86,7 @@ if($rqId && is_numeric($rqId)) {
 				b.isValid NOT LIKE 'x%'
 			";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
 	$rs = $db->query($sql) or die("GET_RCV_ITEMS: " . $db->error);
 	if(mysqli_num_rows($rs)) {
@@ -106,6 +106,8 @@ if($rqId && is_numeric($rqId)) {
 } else {
 
 	//list of pos
+	
+	unset($data, $tmp2);
 
 	$sql = "
 	SELECT
@@ -122,11 +124,11 @@ if($rqId && is_numeric($rqId)) {
 		isValid NOT LIKE 'void%' AND poNo IS NOT NULL AND poNO != ''
 	";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
 	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
 	while($tmp = $rs->fetch_assoc()) {
-		$result1[$tmp["requisitionId"]] = $tmp;
+		$tmp2[$tmp["requisitionId"]] = $tmp;
 	}
 
 	$sql = "
@@ -141,82 +143,54 @@ if($rqId && is_numeric($rqId)) {
 	GROUP BY
 		requisitionId
 	";
-	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
+
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
+
+	$rs = $db->query($sql) or die("GET_RCV_COUNTS: " . $db->error . $sqlHTML);
 	while($tmp = $rs->fetch_assoc()) {
-		$result1[$tmp["requisitionId"]]["rcvActivityCount"] = $tmp["rcvActivityCount"];
-		$result1[$tmp["requisitionId"]]["rcvActivityAmount"] = $tmp["rcvActivityAmount"];
+		$tmp2[$tmp["requisitionId"]]["rcvActivityCount"] = $tmp["rcvActivityCount"];
+		$tmp2[$tmp["requisitionId"]]["rcvActivityAmount"] = $tmp["rcvActivityAmount"];
 	}
-
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
-
-	/*
-	$sql = "
-	SELECT
-		a.requisitionId, a.numItems, a.poNo, a.poType, a.poAmount, a.poDate,
-		a.vendorName, a.justification,
-		COUNT(b.receivingId) AS rcvActivityCount,
-		SUM(b.invoiceAmount) AS rcvActivityAmount,
-		NULL AS distribActivityCount,
-		NULL AS distribActivityAmount,
-		a.status, a.statusDate
-	FROM
-		${rqTable} a LEFT JOIN ${rcvTable} b ON a.requisitionId=b.requisitionId
-	WHERE
-		a.isValid NOT LIKE 'void%' AND b.isValid NOT LIKE 'x%' AND a.poNo IS NOT NULL AND a.poNO != ''
-	GROUP BY
-		a.requisitionId
-	";
-
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
-
-	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
-	while($tmp = $rs->fetch_assoc()) {
-		$result1[$tmp["requisitionId"]] = $tmp;
-	}
-	*/
 
 	//distribution activity count
 	$sql = "
 	SELECT t1.requisitionId, COUNT(t1.dCount) AS dCount FROM
-		(SELECT
-			a.requisitionId, COUNT(b.distributionId) AS dCount
-		FROM
-			${rcvItemsTable} a, ${distribItemsTable} b
-		WHERE
-			a.receivingItemId = b.receivingItemId AND
-			a.isValid NOT LIKE 'x%' AND b.isValid NOT LIKE 'x%'
+		(SELECT c.requisitionId, COUNT(b.distributionId) AS dCount 
+		FROM finance4.receiving_items a, finance4.distributions_items b, finance4.receiving c 
+		WHERE a.receivingItemId = b.receivingItemId AND a.receivingId=c.receivingId AND a.isValid NOT LIKE 'x%' AND b.isValid NOT LIKE 'x%' 
 		GROUP BY a.requisitionId, b.distributionId) t1
 	GROUP BY t1.requisitionId
 	";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
-	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
+	$rs = $db->query($sql) or die("GET_DISTR_COUNTS: " . $db->error . $sqlHTML);
 	while($tmp = $rs->fetch_assoc()) {
-		$result1[$tmp["requisitionId"]]["distribActivityCount"] = $tmp["dCount"];
+		$tmp2[$tmp["requisitionId"]]["distribActivityCount"] = $tmp["dCount"];
 	}
 
 	//distribution activity amount
 	$sql = "
 	SELECT
-		a.requisitionId, SUM(b.quantity * a.price) AS amount
+		c.requisitionId, SUM(b.quantity * a.price) AS amount
 	FROM
-		${rcvItemsTable} a, ${distribItemsTable} b
+		${rcvItemsTable} a, ${distribItemsTable} b, ${rcvTable} c
 	WHERE
-		a.receivingItemId = b.receivingItemId AND
+		a.receivingItemId = b.receivingItemId AND 
+		a.receivingID = c.receivingId AND 
 		a.isValid NOT LIKE 'x%' AND b.isValid NOT LIKE 'x%'
 	GROUP BY
 		a.requisitionId
 	";
 
-	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql) . "</p>";
+	if($local) printf($smallP, str_replace("<", "&lt;", $sql) . ";");
 
-	$rs = $db->query($sql) or die("GET_RQ_LIST: " . $db->error . $sqlHTML);
+	$rs = $db->query($sql) or die("GET_DISTR_AMOUNT: " . $db->error . $sqlHTML);
 	while($tmp = $rs->fetch_assoc()) {
-		$result1[$tmp["requisitionId"]]["distribActivityAmount"] = $tmp["amount"];
+		$tmp2[$tmp["requisitionId"]]["distribActivityAmount"] = $tmp["amount"];
 	}
-
-	if(is_array($result1)) foreach($result1 as $row) { $data["rqlist"][] = $row; }
+	
+	$data["rqlist"] = array_values($tmp2);
 
 }
 

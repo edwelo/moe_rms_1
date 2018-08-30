@@ -120,7 +120,7 @@
 					<th style="width: 20px;"> del </th>
 				</tr>
 
-				<tr>
+				<tr style="vertical-align: top; font-size: small;">
 					<td>
 						<data value="poNo"></data>&nbsp;
 						<input type=hidden name="distributionItemId" value="" />

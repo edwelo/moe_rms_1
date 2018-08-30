@@ -34,6 +34,11 @@ if($local) {
 		$html = str_replace("{heading}", "${page_name} List Data", $html);
 	}
 	print $html;
+	
+	$regP = "<p>%s</p>";
+	$smallP = "<p style='font-size: small;'>%s</p>";
+	
+	printf($regP, "SQLs:");
 }
 
 if(!$page_name) { exit; }

@@ -8,6 +8,7 @@
 
 	<script type="text/javascript">
 		var test = false; //global boolean for various tests
+		var userId = 0 //logged in user Id.
 		var rqId = 0; //0 for list view. number or 'new' for form view.
 		var rcvId = 0; //0 for rcv list view. number or 'new' for form view.
 		var rqItemSel; //for rq items selector in receiving detail form
@@ -17,6 +18,7 @@
 		//wait for page to fully load, then run the javascripts
 		window.onload = function() {
 			page_name = document.getElementById("selected").innerHTML;
+			if(!userId) userId = document.getElementById("userId").innerHTML;
 			main();
 		}
 	</script>

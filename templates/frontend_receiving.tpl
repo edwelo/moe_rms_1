@@ -132,11 +132,13 @@
 				<hr />
 
 				<input type="hidden" name="requisitionId" value="" />
+				<input type="hidden" name="userId" value="{uidnumber}" id="userId" />
+				<input type="hidden" name="receivingId" value="" />
 
-				Office:		<input type=text name="initiatingOffice" value="" size=25 />
-				RqBy:		<input type=text name="requestedBy" value="" size=25 />
+				Office:		<input type=text name="initiatingOffice" value="" size=20 />
+				RqBy:		<input type=text name="requestedBy" value="" size=20 />
 				RqDate:		<input type="text" name="requestedDate" value="" size=12 />
-				PrepBy:		<input type=text name="preparedBy" value="" size=25 />
+				PrepBy:		<input type=text name="preparedBy" value="" size=20 />
 				PrepDate:	<input type="text" name="preparedDate" value="" size=12 />
 
 				<br />
@@ -144,22 +146,25 @@
 				AuthNo:		<input type=text name="authNo" value="" size=12 />
 				AuthDate:	<input type="text" name="authDate" value="" size=12 />
 				AuthAmount:	<input type="text" name="authAmount" value="" size=12 />
-				Purpose:	<input type=text name="justification" value="" size=60 />
+				Purpose:	<input type=text name="justification" value="" size=50 />
 
 				<br />
 
-				RcvBy:		<input type=text name="rcvBy" value="" size=25 />
+				RcvBy:		<input type=text name="rcvBy" value="" size=20 />
 				RcvDate:	<input type="text" name="rcvDate" value="" size=12 />
 				InvNo:		<input type="text" name="invoiceNo" value="" size=12 />
 				InvDate:	<input type="text" name="invoiceDate" value="" size=12 />
 				InvAmt:		<input type="text" name="invoiceAmount" value="" size=12 />
-				Date:		<input type="text" name="statusDate" value="" size=20 />
+				
+				<br />
+				
+				Status:		<input type="text" name="status" value="" size=12 />
+				StatusDate:		<input type="text" name="statusDate" value="" size=12 />
 
 				<br />
 
 				Remarks:	<input type="text" name="remarks" value="" size=120 />
 
-							<input type="hidden" name="uaserId" value="{uidnumber}" />
 			</div>
 			
 			<hr />
