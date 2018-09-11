@@ -75,7 +75,7 @@
 				
 
 				Vendor: 		<input type="text" name="vendorId" value="" size=2 onchange="get_vendor(this);"/>
-								<input readonly name="vendorName" value="" size=60 id="vendorName" />
+								<input readonly name="vendorName" value="" size=60 id="vendorName" onclick="window.open('?pn=Utilities&t1=Vendors', '_blank')" />
 				RqAmount: 	   $<input type=text name="rqAmount" value="" readonly size=12 />
 				ApprvDate:		<input type="text" name="approvedDate" value="" size=10 /><br />
 
