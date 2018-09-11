@@ -66,14 +66,13 @@
 		<div id="formViewData" style="min-height: 450px;">
 
 			<div id="rqData" class="div_wrap3">
-				Request Office/By/Date:
-								<input type="text" name="initiatingOffice" value="" size=15 />
+				<span style="cursor: pointer" onclick="window.open('?pn=Utilities&t1=Cost Centers', '_blank')">Request Office</span>/By/Date:
+								<input type="text" name="initiatingOffice" value="" size=15 id="costCenter" onchange="check_cctr()" />
 				 				<input type="text" name="requestedBy" value="" size=15 />
 								<input type="text" name="requestedDate" value="" size=10 />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				Prep By/Date: 	<input readonly type="text" name="preparedByName" value="" size=15 /><input type=hidden name="preparedById" value="" />
 						 		<input type="text" name="preparedDate" value="" size=10 /><br />
 				
-
 				Vendor: 		<input type="text" name="vendorId" value="" size=2 onchange="get_vendor(this);"/>
 								<input readonly name="vendorName" value="" size=60 id="vendorName" onclick="window.open('?pn=Utilities&t1=Vendors', '_blank')" />
 				RqAmount: 	   $<input type=text name="rqAmount" value="" readonly size=12 />

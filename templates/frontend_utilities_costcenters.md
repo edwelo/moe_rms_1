@@ -45,7 +45,7 @@
 *PCC*: Palau Community College  
 
 ###Support Services###
-*Food*: Food Services  
+*StuLunch*: Student Lunch (Food Services)  
 *StuBus*: Student Busing  
 *Trans*: Transportation Services  
 *IT*: Information Technology/Computer Services  
