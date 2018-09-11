@@ -41,6 +41,15 @@ if($rqId && is_numeric($rqId)) {
 		while($tmp = $rs->fetch_assoc()) { $data["rq"]["items"][] = $tmp; }
 	}
 
+	$sql3 = "SELECT vendorId, vendorName FROM ${vendorTable} ORDER BY vendorName, vendorId";
+
+	$sqlHTML .= "<p style='font-size: small;'>" . str_replace("<", "&lt;", $sql3) . "</p>";
+
+	$rs = $db->query($sql3) or die("GET_VENDORS: " . $db->error);
+	if(mysqli_num_rows($rs)) {
+		while($tmp = $rs->fetch_assoc()) { $data["rq"]["vendors"][$tmp["vendorId"]] = $tmp["vendorName"]; }
+	}
+
 } else {
 
 	//list of rqs
