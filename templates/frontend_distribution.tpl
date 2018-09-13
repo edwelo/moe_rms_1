@@ -88,15 +88,15 @@
 
 			<div id="distInfo">
 				Distrib Id:		<input type="text" name="distributionId" value="" size=4 />
-				Destination:	<input type="text" name="destination" value="" />
-				PrepBy:			<input type="text" name="preparedBy" value="" />
+				Destination:	<input type="text" name="destination" value="" size=15 />
+				PrepBy:			<input type="text" name="preparedBy" value="" size=15 />
 				PrepDate:		<input type="text" name="preparedDate" value="" size=12 />
 
 				<br />
 
-				DlvrBy:			<input type="text" name="deliveredBy" value="" />
+				DlvrBy:			<input type="text" name="deliveredBy" value="" size=15 />
 				DlvrDate:		<input type="text" name="deliveredDate" value="" size=12 />
-				RcvBy:			<input type="text" name="receivedBy" value="" />
+				RcvBy:			<input type="text" name="receivedBy" value="" size=15 />
 				RcvDate:		<input type="text" name="receivedDate" value="" size=12 />
 
 				<br />

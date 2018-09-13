@@ -4,7 +4,11 @@
 		<div id="listViewHeader">
 			<button class="level1button" style="float: right;" onclick="setId('new')">New RQ</button>
 			List of Purchase Orders.
-			<span style="color: grey;">Click on a row to edit.</span> <br><br>
+			<span style="color: grey;">Click on a row to edit.</span>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input id=rqListFilter type=checkbox checked onchange="main();" />&nbsp;
+			<span style="color: grey;">Show only your requisitions.</span>
+			<br><br>
 		</div>
 
 		<div id="listViewDetail">
@@ -96,10 +100,10 @@
 						<tr>
 							<th> Id </th>
 							<th> Org </th>
-							<th> CCtr </th>
+							<th> SAcc </th>
 							<th> Task </th>
 							<th> Opt </th>
-							<th> SAcc </th>
+							<th> CCtr </th>
 							<th style="text-align: right;"> Qty </th>
 							<th> Unit </th>
 							<th style="text-align: right;"> Price </th>
@@ -112,10 +116,10 @@
 						<tr>
 							<td><input style="width: 30px;" readonly type="text" name="requisitionItemId" value=""></td>
 							<td><input style="width: 40px;" type="text" name="org" value=""></td>
-							<td><input style="width: 63px;" type="text" name="costCenter" value=""></td>
+							<td><input style="width: 40px;" type="text" name="acc" value=""></td>
 							<td><input style="width: 55px;" type="text" name="task" value=""></td>
 							<td><input style="width: 55px;" type="text" name="opt" value=""></td>
-							<td><input style="width: 40px;" type="text" name="acc" value=""></td>
+							<td><input style="width: 63px;" type="text" name="costCenter" value=""></td>
 							<td><input style="width: 90px; text-align: right;" type="text" name="quantity" value=""></td>
 							<td><input style="width: 62px;" type="text" name="unit" value=""></td>
 							<td><input style="width: 90px; text-align: right;" type="text" name="price" value=""></td>
