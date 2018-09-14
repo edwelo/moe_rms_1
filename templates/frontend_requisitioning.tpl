@@ -6,7 +6,7 @@
 			List of Purchase Orders.
 			<span style="color: grey;">Click on a row to edit.</span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input id=rqListFilter type=checkbox checked onchange="main();" />&nbsp;
+			<input id="rqListFilter" type=checkbox checked onchange="main();" />&nbsp;
 			<span style="color: grey;">Show only your requisitions.</span>
 			<br><br>
 		</div>

@@ -46,13 +46,13 @@ if(in_array($_POST["username"] . $_POST["password"], $nonLDAPusers)) {
 				// add uname and cname to $_SESSION
 				list($tmp, ) = explode("|", $ldap['info'][0]['uid'][0]);
 				$tmp = trim($tmp);
-				if(strpos(". lauriemaderkewet deniciamariur fennyseklii edwel", $tmp)) {
+				//if(strpos(". lauriemaderkewet deniciamariur fennyseklii edwel", $tmp)) {
 					$_SESSION['uid'] = $tmp;
 					$_SESSION['cn'] = $ldap['info'][0]['cn'][0];
 					$_SESSION['uidnumber'] = $ldap['info'][0]['uidnumber'][0];
 					$_SESSION['o'] = $ldap['info'][0]['o'][0];
 					$_SESSION['persid'] = $_SESSION['uidnumber'] - 2000;
-				}
+				//}
 				#echo "<pre>";print_r($ldap["info"]);echo "</pre>\r";
 
 			} else {
